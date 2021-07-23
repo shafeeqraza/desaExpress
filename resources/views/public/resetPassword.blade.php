@@ -25,27 +25,31 @@
                     <p class="mb-0">{{ session('status') }}</p>
                 </div>
             @endif
-            @if (session('reset-success'))
-                <div class="bg-success text-light text-center p-2 rounded">
-                    <p class="mb-0">{{ session('reset-success') }}</p>
-                </div>
-            @endif
-            <form action="{{ route('login.post') }}" method="post">
+            <form action="{{ route('password.reset', $token) }}" method="post">
                 @csrf
+                <input type="hidden" value="{{ $token }}" name="token"/>
                 <div class="signin-content d-flex">
                     <div class="email-input">
                         <label class="mb-3" for="">Email</label>
                         <input class="col-lg-12 mb-3" type="email" name="email">
                     </div>
+                    @error('email')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                     <div class="password-input">
                         <label class="mb-3 mt-3" for="password">Password</label>
                         <input type="password" class="col-lg-12 mb-3" id="password" name="password">
                     </div>
-                    <a class="mb-3" href="{{ route('forgot-password') }}">Forgot Password?</a>
+                    @error('password')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <div class="password-input">
+                        <label class="mb-3 mt-3" for="password">Confirm Password</label>
+                        <input type="password" class="col-lg-12 mb-3" id="password_confirmation" name="password_confirmation">
+                    </div>
                 </div>
                 <div class="signin-btn d-flex">
-                    <button class="btn btn-lg mb-4 mt-3">Sign In</button>
-                    <label for="">Create an account? <a href="{{ route('register') }}">Click Here</a> </label>
+                    <button class="btn btn-lg mb-4 mt-3">Reset Password</button>
                 </div>
             </form>
         </div>
