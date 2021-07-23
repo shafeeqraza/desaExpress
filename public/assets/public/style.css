@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Bahnschrift;
+    src: url(./fonts/BAHNSCHRIFT.TTF);
+}
+
+@font-face {
+    font-family: poppinmedium;
+    src: url(./fonts/Poppins-Regular.ttf);
+}
+button:hover{
+    color:white !important;
+}
+/* Sign in page */
+.signin-bg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.desaexpress-logo {
+    margin-bottom: 5%;
+}
+
+.signin-bg::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(./login-bg.jpg);
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signin-main h1 {
+    color: white;
+    font-size: 3rem;
+    font-family: Bahnschrift;
+    color: #EC1C24;
+}
+
+.signin-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding-left: 35rem;
+    padding-right: 35rem;
+}
+
+.signin-content {
+    flex-direction: column;
+    text-align: left;
+}
+.signin-content a {
+    color: #e6e6e6;
+    font-family: poppinmedium;
+    text-decoration: none;
+}
+.email-input label,
+.password-input label {
+    font-family: poppinmedium;
+    color: #e6e6e6;
+}
+
+input {
+    background-color: transparent;
+    outline: none;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-color: white;
+    color: #e6e6e6;
+    font-family: poppinmedium;
+}
+
+
+.signin-content a:hover{
+    color:white !important;
+}
+.signin-btn {
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.signin-btn button {
+    font-family: poppinmedium;
+    background-color: #EC1C24;
+    border-color: #EC1C24;
+    border-radius: 15px;
+    padding: 15px;
+    color: #e6e6e6;
+}
+
+.signin-btn label,
+.signin-btn a {
+    color: #e6e6e6;
+    font-family: poppinmedium;
+}
+
+.signin-btn a {
+    color: #EC1C24;
+    text-decoration: none;
+}
+
+/* signin page ends here */
+/* signup page */
+.signup-bg {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.signup-bg::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(./login-bg.jpg);
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.signup-main {
+    width: 100%;
+    padding-left: 35rem;
+    padding-right: 35rem;
+    padding-top: 5%;
+    padding-bottom: 10%;
+}
+
+.signup-main h1 {
+    color: white;
+    font-size: 3rem;
+    font-family: Bahnschrift;
+    color: #EC1C24;
+}
+
+.signup-content {
+    flex-direction: column;
+    text-align: left;
+}
+
+.signup-content label {
+    color: #e6e6e6;
+    font-family: poppinmedium;
+}
+.signup-btn {
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.signup-btn button {
+    font-family: poppinmedium;
+    background-color: #EC1C24;
+    border-color: #EC1C24;
+    border-radius: 15px;
+    padding: 15px;
+    color: #e6e6e6;
+}
+
+.signup-btn label,
+.signup-btn a {
+    color: #e6e6e6;
+    font-family: poppinmedium;
+}
+
+.signup-btn a {
+    color: #EC1C24;
+    text-decoration: none;
+}
+.type-input select {
+    background-color: transparent !important;
+    outline: none;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-color: white;
+    color: #e6e6e6;
+    font-family: poppinmedium;
+    width: 100%;
+}
+
+.type-input select option {
+    background-color: #c0151b;
+    font-size: 1rem;
+}
+
+/* signup page ends here */
+/* forgot password page */
+.forgot-bg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+}
+
+.forgot-bg::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(./login-bg.jpg);
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.forgot-main h1 {
+    color: white;
+    font-size: 3rem;
+    font-family: Bahnschrift;
+    color: #EC1C24;
+}
+
+.forgot-main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding-left: 35rem;
+    padding-right: 35rem;
+}
+
+.forgot-content {
+    flex-direction: column;
+    text-align: left;
+}
+
+.email-input label{
+    font-family: poppinmedium;
+    color: #e6e6e6;
+}
+
+.forgot-btn {
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+.forgot-btn label,
+.forgot-btn a {
+    color: #e6e6e6;
+    font-family: poppinmedium;
+}
+.forgot-btn button {
+    font-family: poppinmedium;
+    background-color: #EC1C24;
+    border-color: #EC1C24;
+    border-radius: 15px;
+    padding: 15px;
+    color: #e6e6e6;
+}
+.forgot-btn a {
+    color: #EC1C24;
+    text-decoration: none;
+}
+
+/* forgot password page ends here */
+@media only screen and (max-width: 1440px) {
+    .signin-main {
+        padding-left: 25rem;
+        padding-right: 25rem;
+    }
+
+    .signup-main {
+        padding-left: 25rem;
+        padding-right: 25rem;
+    }
+    .forgot-main {
+        padding-left: 25rem;
+        padding-right: 25rem;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .signin-main {
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+
+    .signin-main h1 {
+        margin-bottom: 20px;
+    }
+
+    .signup-main {
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+    .forgot-main {
+        padding-left: 15rem;
+        padding-right: 15rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .signin-main {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    .signin-main h1 {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .email-input,
+    .password-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .signup-main {
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 5rem;
+    }
+
+    .type-input {
+        width: 100%;
+        border-width: 100%;
+    }
+
+    .type-input select option {
+        background-color: #c0151b;
+        font-size: 10px;
+    }
+
+    .fullname-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .confirm-password-input {
+        display: flex;
+        flex-direction: column;
+    }
+    .forgot-main {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .signup-main {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 5rem;
+    }
+    .forgot-main {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    .forgot-main h1 {
+        font-size:2.5rem;
+    }
+}
