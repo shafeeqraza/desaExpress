@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DesaDispatchController;
 use App\Http\Controllers\DesaDispatcherController;
 use App\Http\Controllers\DesaLoaderController;
 use App\Http\Controllers\DispatcherController;
@@ -55,8 +56,8 @@ Route::middleware("auth")->group(function() {
     // desa dispatcher routes
     Route::middleware(["isDesaDispatcher"])->group(function() {
 
-        Route::get('desa/dispatcher/my-account', [DesaDispatcherController::class, "profile"])->name("desa.dispatcher.profile");
-        Route::resource('/desa/dispatcher/dispatches', DesaDispatcherController::class, [
+        Route::get('desa/dispatcher/my-account', [DesaDispatchController::class, "profile"])->name("desa.dispatcher.profile");
+        Route::resource('/desa/dispatcher/dispatches', DesaDispatchController::class, [
             "names" => [
                 "index" => "desa.dispatcher.dispatches",
                 "show" => "desa.dispatcher.dispatches.show",
@@ -67,7 +68,7 @@ Route::middleware("auth")->group(function() {
                 "destory" => "desa.dispatcher.dispatches.destory"
             ]
         ]);
-        Route::get('/desa/dispatcher/dispatches/{id}/map', [DesaDispatcherController::class, "map"])->name("desa.dispatcher.dispatches.map");
+        Route::get('/desa/dispatcher/dispatches/{id}/map', [DesaDispatchController::class, "map"])->name("desa.dispatcher.dispatches.map");
     });
 
     // desa loader profile route

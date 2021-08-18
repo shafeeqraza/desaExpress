@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DesaDispatch;
 use Illuminate\Http\Request;
 
-class DesaDispatcherController extends Controller
+class DesaDispatchController extends Controller
 {
-
     public function index()
     {
         return view("desa-dispatcher.index");
