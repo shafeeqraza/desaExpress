@@ -44,7 +44,16 @@ class AuthenticationController extends Controller
         if(!Auth::attempt($request->only("email", "password"))) {
             return back()->with(["status" => "Invalid credentials"]);
         }
-        return redirect()->route("my-account");
+
+        if(auth()->useR()->role === "desa driver" || auth()->user()->role === "desa loader") {
+
+            return redirect()->route("desa.loader.index");
+
+        }else if(auth()->user()->role === "desa dispatcher" || auth()->user()->role === "desa dispatcher"){
+
+            return redirect()->route("desa.dispatcher.index");
+
+        }
     }
 
     public function forgotPassword(Request $request)

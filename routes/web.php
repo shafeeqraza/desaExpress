@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DesaDispatcherController;
+use App\Http\Controllers\DesaLoaderController;
+use App\Http\Controllers\DispatcherController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoaderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +51,30 @@ Route::middleware('guest')->group(function () {
 */
 
 Route::middleware("auth")->group(function() {
-    Route::get('/my-account', [ProfileController::class, "index"])->name("my-account");
+
+    // desa dispatcher profile route
+    Route::get('desa/dispatcher/my-account', [DesaDispatcherController::class, "profile"])->name("desa.dispatcher.profile");
+    Route::resource('/desa/dispatcher/dispatches', DesaDispatcherController::class, [
+        "names" => [
+            "index" => "desa.dispatcher.dispatches",
+            "show" => "desa.dispatcher.dispatches.show",
+            "create" => "desa.dispatcher.dispatches.create",
+            "store" => "desa.dispatcher.dispatches.store",
+            "edit" => "desa.dispatcher.dispatches.edit",
+            "update" => "desa.dispatcher.dispatches.update",
+            "destory" => "desa.dispatcher.dispatches.destory"
+        ]
+    ]);
+    Route::get('/desa/dispatcher/dispatches/{id}/map', [DesaDispatcherController::class, "map"])->name("desa.dispatcher.dispatches.map");
+
+    // desa loader profile route
+    Route::get('/desa/loader/my-account', [DesaLoaderController::class, "index"])->name("desa.loader.index");
+    Route::get('/desa/loader/my-loads', [DesaLoaderController::class, "myLoads"])->name("desa.loader.my-loads");
+    Route::get('/desa/loader/loads', [DesaLoaderController::class, "loads"])->name("desa.loader.loads");
+    Route::get('/desa/loader/{id}/map', [DesaLoaderController::class, "map"])->name("desa.loader.map");
+    Route::get('/desa/loader/{id}/show', [DesaLoaderController::class, "show"])->name("desa.loader.show");
+
+
+
     Route::post("/logout", [AuthenticationController::class, "logout"])->name("logout");
 });
