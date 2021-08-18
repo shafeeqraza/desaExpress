@@ -15,10 +15,13 @@
             <a class="nav-link" href="{{ route("desa.loader.my-loads") }}">MY LOADS</a>
           </li>
         </ul>
-        <button class="signOut">
-          <i class="fa fa-sign-out"></i>
-          <span>SIGN OUT</span>
-        </button>
+        <form action="{{ route("logout") }}" method="post">
+            @csrf
+            <button class="signOut">
+                <i class="fa fa-sign-out"></i>
+                <span>SIGN OUT</span>
+            </button>
+        </form>
       </div>
     </div>
   </nav>
