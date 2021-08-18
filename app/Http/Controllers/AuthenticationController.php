@@ -45,7 +45,7 @@ class AuthenticationController extends Controller
             return back()->with(["status" => "Invalid credentials"]);
         }
 
-        if(auth()->useR()->role === "desa driver" || auth()->user()->role === "desa loader") {
+        if(auth()->user()->role === "desa driver" || auth()->user()->role === "desa loader") {
 
             return redirect()->route("desa.loader.profile");
 
