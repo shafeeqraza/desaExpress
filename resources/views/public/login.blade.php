@@ -10,7 +10,9 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ asset('assets/public/style.css') }}">
-    <title>Document</title>
+     <!-- favicon -->
+     <link rel="icon" href="{{ asset('assets/public/1x/desaexpress-logo.png') }}">
+     <title>Sign in with Desa Express</title>
 </head>
 
 <body>

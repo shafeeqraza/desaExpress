@@ -52,23 +52,26 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware("auth")->group(function() {
 
-    // desa dispatcher profile route
-    Route::get('desa/dispatcher/my-account', [DesaDispatcherController::class, "profile"])->name("desa.dispatcher.profile");
-    Route::resource('/desa/dispatcher/dispatches', DesaDispatcherController::class, [
-        "names" => [
-            "index" => "desa.dispatcher.dispatches",
-            "show" => "desa.dispatcher.dispatches.show",
-            "create" => "desa.dispatcher.dispatches.create",
-            "store" => "desa.dispatcher.dispatches.store",
-            "edit" => "desa.dispatcher.dispatches.edit",
-            "update" => "desa.dispatcher.dispatches.update",
-            "destory" => "desa.dispatcher.dispatches.destory"
-        ]
-    ]);
-    Route::get('/desa/dispatcher/dispatches/{id}/map', [DesaDispatcherController::class, "map"])->name("desa.dispatcher.dispatches.map");
+    // desa dispatcher routes
+    Route::middleware(["isDesaDispatcher"])->group(function() {
+
+        Route::get('desa/dispatcher/my-account', [DesaDispatcherController::class, "profile"])->name("desa.dispatcher.profile");
+        Route::resource('/desa/dispatcher/dispatches', DesaDispatcherController::class, [
+            "names" => [
+                "index" => "desa.dispatcher.dispatches",
+                "show" => "desa.dispatcher.dispatches.show",
+                "create" => "desa.dispatcher.dispatches.create",
+                "store" => "desa.dispatcher.dispatches.store",
+                "edit" => "desa.dispatcher.dispatches.edit",
+                "update" => "desa.dispatcher.dispatches.update",
+                "destory" => "desa.dispatcher.dispatches.destory"
+            ]
+        ]);
+        Route::get('/desa/dispatcher/dispatches/{id}/map', [DesaDispatcherController::class, "map"])->name("desa.dispatcher.dispatches.map");
+    });
 
     // desa loader profile route
-    Route::get('/desa/loader/my-account', [DesaLoaderController::class, "index"])->name("desa.loader.index");
+    Route::get('/desa/loader/my-account', [DesaLoaderController::class, "index"])->name("desa.loader.profile");
     Route::get('/desa/loader/my-loads', [DesaLoaderController::class, "myLoads"])->name("desa.loader.my-loads");
     Route::get('/desa/loader/loads', [DesaLoaderController::class, "loads"])->name("desa.loader.loads");
     Route::get('/desa/loader/{id}/map', [DesaLoaderController::class, "map"])->name("desa.loader.map");

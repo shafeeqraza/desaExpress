@@ -25,6 +25,14 @@
                     <p class="mb-0">{{ session('status') }}</p>
                 </div>
             @endif
+            @if($errors->any())
+                @foreach ($errors->all() as $error)
+                <div class="bg-danger text-light text-center p-2 rounded">
+                    <p class="mb-0">{{ $error }}</p>
+                </div>
+                @endforeach
+
+            @endif
             <form action="{{ route("forgot-password.post") }}" method="post">
                 @csrf
             <div class="forgot-content d-flex">

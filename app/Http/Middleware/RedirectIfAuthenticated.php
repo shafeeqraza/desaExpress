@@ -23,7 +23,17 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+
+                if(auth()->user()->role === "desa driver" || auth()->user()->role === "desa loader") {
+
+                    return redirect()->route("desa.loader.profile");
+
+                }else if(auth()->user()->role === "desa dispatcher"){
+
+                    return redirect()->route("desa.dispatcher.profile");
+
+                }
+                // return redirect(RouteServiceProvider::HOME);
             }
         }
 

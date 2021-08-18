@@ -47,11 +47,11 @@ class AuthenticationController extends Controller
 
         if(auth()->useR()->role === "desa driver" || auth()->user()->role === "desa loader") {
 
-            return redirect()->route("desa.loader.index");
+            return redirect()->route("desa.loader.profile");
 
         }else if(auth()->user()->role === "desa dispatcher" || auth()->user()->role === "desa dispatcher"){
 
-            return redirect()->route("desa.dispatcher.index");
+            return redirect()->route("desa.dispatcher.profile");
 
         }
     }
