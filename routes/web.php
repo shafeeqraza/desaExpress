@@ -78,9 +78,11 @@ Route::middleware("auth")->group(function () {
     Route::get('/desa/loader/{id}/map', [DesaLoaderController::class, "map"])->name("desa.loader.map");
     Route::get('/desa/loader/{id}/show', [DesaLoaderController::class, "show"])->name("desa.loader.show");
     // Route::get('/update_profile')
+
+    // uzair route
     Route::post('/update_profile', [DesaDispatchController::class, "update"])->name('update_profile');
     Route::post('/update_data', [DesaDispatchController::class, "updatedata"])->name('update_data');
-    // Route::get('delete_data/{id}', 'DesaDispatchController@destroy_data')->name('delete_data.destroy');
+    Route::get('delete_data/{id}', [DesaDispatchController::class,"destroy_data"])->name('delete_data');
 
 
 

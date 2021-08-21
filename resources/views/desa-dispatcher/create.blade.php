@@ -257,13 +257,21 @@
                             <input type="number" placeholder="0.00" name="fscAmount">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 d-flex flex-column">
+                        <label for="types">FSC Amount Type</label>
+                        <select id="types" name="fscAmountType">
+                            <option value="Flat Fee">Flat Fee</option>
+                            <option value="Per Mile">Per Mile</option>
+                            <option value="Percent">Percent</option>
+                        </select>
+                    </div>
+                    {{-- <div class="col-lg-4">
                         <label for="">FSC Amount Type</label>
                         <div class="dollar-input">
                             <label for=""><i class="fas fa-dollar-sign"></i></label>
                             <input type="text" placeholder="0.00" name="fscAmountType">
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="basic-card-head mt3">
                     <h5>Invoice Advance</h5>

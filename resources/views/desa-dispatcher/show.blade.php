@@ -7,7 +7,7 @@
                 <h1 class="mainHeading">
                     Desa Dispatch
                 </h1>
-                <h5>Load # 489-789</h5>
+                <h5>Load # {{$detailshow->custom_trip_number}}</h5>
             </div>
             <div class="main-head-btns">
                 <div class="col-lg-12 d-flex justify-content-end actionsView">
@@ -33,43 +33,45 @@
                     <div class="basic-card mb2">
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Load #:</label>
-                            <h5>489-789</h5>
+                            <h5>{{$detailshow->custom_trip_number}}</h5>
                         </div>
-                        <div class="load mt2 d-flex justify-content-between align-items-center">
+                        {{-- <div class="load mt2 d-flex justify-content-between align-items-center">
                             <label for="">Invoice #: &nbsp;&nbsp; <span class="invoiceName"></span> </label>
                             <input type="file" hidden id="invoice-input">
                             <label for="invoice-input" class="dispatch-load-btn">Upload Invoice</label>
-                        </div>
+                        </div> --}}
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Bol</label>
-                            <h5>489-789</h5>
+                            <h5>{{$detailshow->pickups[0]->bol}}</h5>
                         </div>
 
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">1 Driver:</label>
-                            <h5>Bulger</h5>
+                            <h5>{{$detailshow->driver_username}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Truck / Trailer</label>
-                            <h5>20 / 28</h5>
+                            <h5>{{$detailshow->truck_number}} / {{$detailshow->trailer}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Pickup Date</label>
-                            <h5>07/28/2021</h5>
+                            <h5>{{$detailshow->pickups[0]->pickup_date}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Delivery Date</label>
-                            <h5>07/28/2021</h5>
+                            <h5>{{$detailshow->deliveries[0]->delivery_date}}</h5>
                         </div>
                         <div class="load mt2 load-from d-flex">
                             <label for="">From</label>
-                            <h5> HALEX HAHA68
-                                7715 HOMESTEAD DRIVE,, HAMILTON, IN</h5>
+                            <h5>
+                                {{$detailshow->pickups[0]->shipper}}
+                            </h5>
                         </div>
                         <div class="load mt2 load-from d-flex">
                             <label for="">To</label>
-                            <h5>HOME DEPOT IB XD05
-                                500 GATEWAY BLVD,, Monroe, OH</h5>
+                            <h5>
+                                {{$detailshow->deliveries[0]->consignee}}
+                            </h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Miles</label>
@@ -81,15 +83,15 @@
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Customer Required Info</label>
-                            <!-- <h5>07/28/2021</h5> -->
+                             <h5>{{$detailshow->pickups[0]->customer_required_info}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Note</label>
-                            <!-- <h5>07/28/2021</h5> -->
+                            <h5>{{$detailshow->pickups[0]->notes}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Weight</label>
-                            <h5>0.0</h5>
+                            <h5>{{$detailshow->pickups[0]->weight}}</h5>
                         </div>
                     </div>
                 </div>
@@ -100,7 +102,7 @@
                     <div class="basic-card mb2">
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Primary Fee</label>
-                            <!-- <h5>489-789</h5> -->
+                             <h5>{{$detailshow->primary_fee}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Flat Fee</label>
@@ -108,7 +110,7 @@
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Fuel Surcharge Fee</label>
-                            <!-- <h5>Flat Fee</h5> -->
+                            <h5>${{$detailshow->fuel_expense}}</h5>
                         </div>
 
                         <div class="load mt2 d-flex justify-content-between">
@@ -121,11 +123,11 @@
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Invoice Advance</label>
-                            <h5>$0.00</h5>
+                            <h5>${{$detailshow->invoice_advance}}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Weight</label>
-                            <h5>0.0</h5>
+                            <h5>{{$detailshow->pickups[0]->weight}}</h5>
                         </div>
                     </div>
                 </div>
@@ -412,9 +414,9 @@
         <div class="col-12 add-note-sec mb2">
 
         </div>
-        <div class="col-lg-12 d-flex align-items-center justify-content-start mb10">
+        {{-- <div class="col-lg-12 d-flex align-items-center justify-content-start mb10">
             <button id="add-note" class="saveBtn">Add Note</button>
-        </div>
+        </div> --}}
     </div>
 </div>
 <script>

@@ -76,28 +76,32 @@
                 <div class="basic-card-head mt3">
                     <h5>Pickups</h5>
                 </div>
+
                 @foreach ($detailsedit->pickups as $item )
                 <div class="row mt1">
                     <div class="col-lg-4">
                         <label for="">Shipper</label>
-                        <input type="text" name="pickupShipper[]" placeholder="Shipper" value="{{$item->shipper}}">
-                        <input id="hidden" type="hidden" name="id" value="{{$item->id}}">
+                        <input type="text" name="shipper[]" placeholder="Shipper" value="{{$item->shipper}}">
+                        <input type="text" name="pickupable_id[]" value="{{$item->pickupable_id}}" hidden>
+                        <input type="hidden" name="id_pickup" value="{{$item->id}}" hidden>
+
+
                     </div>
                     <div class="col-lg-4">
                         <label for="">Pick Up Date</label>
-                        <input type="date" name="pickupDate[]" id="" value="{{$item->pickup_date}}">
+                        <input type="date" name="pickup_date[]" id="" value="{{$item->pickup_date}}">
 
                     </div>
                     <div class="col-lg-4">
                         <label for="">BOL</label>
-                        <input type="text" name="pickupBol[]" id="" placeholder="BOL" value="{{$item->bol}}">
+                        <input type="text" name="bol[]" id="" placeholder="BOL" value="{{$item->bol}}">
 
                     </div>
                 </div>
                 <div class="row mt2">
                     <div class="col-lg-8 d-flex flex-column mb2">
                         <label for="">Instructions</label>
-                        <textarea name="pickupInstructions[]" id="" cols="30" rows="5"
+                        <textarea name="instructions[]" id="" cols="30" rows="5"
                             placeholder="Henry">{{$item->instructions}}</textarea>
                     </div>
                     <div class="col-lg-8 d-flex flex-column mb2">
@@ -109,23 +113,23 @@
                     <div class="row mt1">
                         <div class="col-lg-4">
                             <label for="">Weight</label>
-                            <input type="text" placeholder="Henry" name="pickupWeight[]" value="{{$item->weight}}">
+                            <input type="text" placeholder="Henry" name="weight[]" value="{{$item->weight}}">
                         </div>
                         <div class="col-lg-4">
                             <label for="">Quantity</label>
-                            <input type="date" name="pickupQuantity[]" id="" value="{{$item->quantity}}">
+                            <input type="date" name="quantity[]" id="" value="{{$item->quantity}}">
 
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label for="types">Type</label>
-                            <select id="types" name="pickupType[]">
+                            <select id="types" name="type[]">
                                 <option value="" disabled selected>{{$item->type}} </option>
                                 <option value="Boxes">Boxes</option>
                             </select>
                         </div>
                         <div class="col-lg-8 d-flex flex-column mt2">
                             <label for="">Customer Required Info (Included On Invoice)</label>
-                            <textarea name="pickupCustomerInfo[]" id="" cols="30" rows="5"
+                            <textarea name="notes[]" id="" cols="30" rows="5"
                                 placeholder="Henry">{{$item->customer_required_info}}</textarea>
                         </div>
                         <div class="pickup-next-sec">
@@ -151,7 +155,7 @@
                     <div class="col-lg-4">
                         <label for="">Routing Stop</label>
                         <input type="text" placeholder="Henry" name="routeRoutingStop[]" value="{{$value->route_stop}}">
-                        <input id="hidden" type="hidden" name="id" value="{{$value->id}}">
+                        {{-- <input id="id" type="hidden" name="id" value="{{$value->id}}"> --}}
 
                     </div>
                     <div class="col-lg-4">
@@ -192,7 +196,7 @@
                         <label for="">Consignee</label>
                         <input type="text" placeholder="Henry" name="deliveryConsignee[]"
                             value="{{$delivery->consignee}}">
-                        <input id="hidden" type="hidden" name="id" value="{{$delivery->id}}">
+                        {{-- <input id="hidden" type="hidden" name="id" value="{{$delivery->id}}"> --}}
                     </div>
                     <div class="col-lg-4">
                         <label for="">Delivery Date</label>
@@ -293,14 +297,24 @@
                             <input type="text" placeholder="0.00" name="fscAmount" value="{{$detailsedit->fsc_amount}}">
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 d-flex flex-column">
+                        <label for="types">FSC Amount Type</label>
+                        <select id="types" name="fscAmountType">
+                            <option value="{{$detailsedit->fsc_amount_type}}" disabled selected>
+                                {{$detailsedit->fsc_amount_type}} </option>
+                            <option value="Flat Fee">Flat Fee</option>
+                            <option value="Per Mile">Per Mile</option>
+                            <option value="Percent">Percent</option>
+                        </select>
+                    </div>
+                    {{-- <div class="col-lg-4">
                         <label for="">FSC Amount Type</label>
                         <div class="dollar-input">
                             <label for=""><i class="fas fa-dollar-sign"></i></label>
                             <input type="text" placeholder="0.00" name="fscAmountType"
                                 value="{{$detailsedit->fsc_amount_type}}">
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="basic-card-head mt3">
                     <h5>Invoice Advance</h5>

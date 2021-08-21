@@ -8,7 +8,8 @@
                     My Dispatches
                 </h1>
             </div>
-            <a href="{{ route("desa.dispatcher.dispatches.create") }}" class="tNone d-flex align-items-end">
+            <a href="{{ route("desa.dispatcher.dispatches.create") }}" class="tNone d-flex align-items-end"
+                target="_blank">
                 <button class="saveBtn d-flex align-items-center justify-content-between f16">
                     <i class="fa fa-plus-circle"></i>
                     Add Dispatch
@@ -130,7 +131,7 @@
                                     <td>{{$value->deliveries[0]->consignee}}</td>
                                     <td>
                                         <button class="closeBtn dnoo">
-                                            Booked
+                                            {{$value->booked ? "Booked" : "Not Booked" }}
                                         </button>
                                     </td>
                                     <td>
@@ -141,7 +142,8 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route("desa.dispatcher.dispatches.show",$value->id) }}"
+                                                        target="_blank">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
@@ -154,14 +156,13 @@
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <form action="{{route("delete_data"
-                                                    ,$value->id)}}">
-                                                        @csrf
-                                                        <button>
-                                                            <i class="fa fa-trash"></i>
-                                                            <span>Delete</span>
-                                                        </button>
-                                                    </form>
+                                                    {{-- <form action="#">
+                                                        @csrf --}}
+                                                    <a href="{{route('delete_data',$value->id)}}" onclick="return confirm('Are you sure you want to delete this Dis?');">
+                                                        <i class="fa fa-trash"></i>
+                                                        <span>Delete</span>
+                                                    </a>
+                                                    {{-- </form> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -396,13 +397,14 @@
 
     </div>
 </div>
-
-@endsection
-{{-- <script>
-    $(document).ready(function(){
-            $('.OpenDelete').on('click', function() {
-            $('#delete').modal('show');
-            $('#ID').val($(this).data('id'));
-        });
+<script>
+    @if(Session::get('success'))
+    swal({
+        title: "Desa Dispatcher",
+        text: "Your data has been Deleted",
+        icon: "success",
     });
-</script> --}}
+    @endif
+
+</script>
+@endsection
