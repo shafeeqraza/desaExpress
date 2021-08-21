@@ -59,7 +59,7 @@
                                         data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                                         aria-selected="true">Home</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
+                                {{-- <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile" type="button" role="tab"
                                         aria-controls="pills-profile" aria-selected="false">Profile</button>
@@ -68,7 +68,7 @@
                                     <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-contact" type="button" role="tab"
                                         aria-controls="pills-contact" aria-selected="false">Contact</button>
-                                </li>
+                                </li> --}}
                             </ul>
 
                         </div>
@@ -350,7 +350,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    @foreach ($myLoads as $dispatch)
                                     <tr>
+                                        <td>{{ $dispatch->custom_trip_number }}</td>
+                                        <td>{{ $dispatch->pickups[0]->pickup_date }}</td>
+                                        <td>{{ $dispatch->deliveries[0]->delivery_date }}</td>
+                                        <td>{{ $dispatch->truck_number }}</td>
+                                        <td>{{ $dispatch->customer_name }}</td>
+                                        <td>{{ $dispatch->pickups[0]->shipper }}</td>
+                                        <td>{{ $dispatch->deliveries[0]->consignee }}</td>
+                                        <td>
+                                            <div class="wrapp">
+                                                <select name="" id="" class="closeBtn p010 w-100">
+                                                    <option>In Progress</option>
+                                                    <option>Completed</option>
+                                                </select>
+                                                <i class="fa fa-angle-down"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="th1 ml2 d-flex position-relative">
+                                                <span class="d-flex w-100">
+                                                    <i class="far fa-eye loads-btnIcon position-absolute"></i>
+                                                    <a href="{{ route("desa.loader.show", $dispatch->id) }}"> <button class="closeBtn">
+                                                            View
+                                                        </button>
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    {{-- <tr>
                                         <td>601 123</td>
                                         <td>08/02/2021</td>
                                         <td>25/02/2021</td>
@@ -429,12 +461,12 @@
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> --}}
                                 </tbody>
                             </table>
                         </div>
 
-                        <div class="tab-pane fade overflow" id="pills-profile" role="tabpanel"
+                        {{-- <div class="tab-pane fade overflow" id="pills-profile" role="tabpanel"
                             aria-labelledby="pills-profile-tab">
                             <table class="table myTable">
                                 <thead>
@@ -633,7 +665,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> --}}
 
 
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DesaDispatch;
 use Illuminate\Http\Request;
 use App\Models\User;
 class DesaLoaderController extends Controller
@@ -13,19 +14,28 @@ class DesaLoaderController extends Controller
      */
     public function index()
     {
-
         return view("desa-loader.index");
     }
 
 
     public function loads()
     {
-        return view("desa-loader.loads");
+        $dispatches = DesaDispatch::whereIn("booked", [0, "0"])->get();
+
+        return view("desa-loader.loads", [
+            "dispatches" => $dispatches,
+        ]);
     }
 
     public function myLoads()
     {
-        return view("desa-loader.myLoads");
+        $myLoads = DesaDispatch::where([
+            "driver_username" => auth()->user()->username,
+            "booked" => '1'
+        ])->get();
+        return view("desa-loader.myLoads", [
+            "myLoads" => $myLoads,
+        ]);
     }
 
     /**
@@ -35,21 +45,28 @@ class DesaLoaderController extends Controller
      */
     public function show($id)
     {
-        return view("desa-loader.show");
+        $load = DesaDispatch::where([
+            'id' => $id,
+            "driver_username" => auth()->user()->username
+        ])->get()->first();
+        return view("desa-loader.show", [
+            "load" => $load,
+        ]);
     }
     public function map($id)
     {
         return view("desa-loader.map");
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function book(Request $request, $id)
     {
-        //
+        $dispatch = DesaDispatch::find($id);
+        // return $dispatch;
+        $dispatch->booked = 1;
+        $dispatch->driver_username = auth()->user()->username;
+        $dispatch->status = "progress";
+        $dispatch->save();
+        return redirect()->route("desa.loader.loads")->with("status", "Load has been booked!");
     }
 
 

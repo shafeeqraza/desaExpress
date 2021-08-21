@@ -1,21 +1,21 @@
 @extends('desa-dispatcher.layouts.app')
 @section('content')
-<div class="loads-mainBox mt10">
-    <div class="container mb7">
-        <div class="mainHeading d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-start">
-                <h1>
-                    My Dispatches
-                </h1>
+    <div class="loads-mainBox mt10">
+        <div class="container mb7">
+            <div class="mainHeading d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-start">
+                    <h1>
+                        My Dispatches
+                    </h1>
+                </div>
+                <a href="{{ route('desa.dispatcher.dispatches.create') }}" class="tNone d-flex align-items-end">
+                    <button class="saveBtn d-flex align-items-center justify-content-between f16">
+                        <i class="fa fa-plus-circle"></i>
+                        Add Dispatch
+                    </button>
+                </a>
             </div>
-            <a href="{{ route("desa.dispatcher.dispatches.create") }}" class="tNone d-flex align-items-end">
-                <button class="saveBtn d-flex align-items-center justify-content-between f16">
-                    <i class="fa fa-plus-circle"></i>
-                    Add Dispatch
-                </button>
-            </a>
         </div>
-
         <div class="">
             <div class="loads-tblBox">
 
@@ -28,7 +28,7 @@
                         </div>
                         <div class="subbox2">
                             <label for="">
-                                {{count($details)}}
+                                {{ count($details) }}
                             </label>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="subbox2">
                             <label for="">
-                                {{$booked_data}}
+                                {{ $booked_data }}
                             </label>
                         </div>
                     </div>
@@ -93,9 +93,9 @@
 
                     </div>
                     <!-- <div class="loads-search position-absolute">
-                            <i class="fas fa-search"></i>
-                            <input type="search" placeholder="Search">
-                        </div> -->
+                                <i class="fas fa-search"></i>
+                                <input type="search" placeholder="Search">
+                            </div> -->
                 </div>
 
                 <div class="tab-content" id="pills-tabContent">
@@ -118,55 +118,54 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($details as $value)
-                                <tr>
-                                    <td>{{$value->custom_trip_number}}</td>
-                                    <td> {{$value->pickups[0]->pickup_date}}</td>
-                                    <td>{{$value->deliveries[0]->delivery_date}}</td>
-                                    <td>{{$value->truck_number}}</td>
-                                    <td>{{$value->driver_username}}</td>
-                                    <td>{{$value->customer_name}}</td>
-                                    <td>{{$value->pickups[0]->shipper}}</td>
-                                    <td>{{$value->deliveries[0]->consignee}}</td>
-                                    <td>
-                                        <button class="closeBtn dnoo">
-                                            Booked
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <div class="wrapp">
-                                            <button class="saveBtn p010 w-100">
-                                                Action
-                                                <i class="fa fa-angle-down"></i>
+                                @foreach ($details as $value)
+                                    <tr>
+                                        <td>{{ $value->custom_trip_number }}</td>
+                                        <td> {{ $value->pickups[0]->pickup_date }}</td>
+                                        <td>{{ $value->deliveries[0]->delivery_date }}</td>
+                                        <td>{{ $value->truck_number }}</td>
+                                        <td>{{ $value->driver_username }}</td>
+                                        <td>{{ $value->customer_name }}</td>
+                                        <td>{{ $value->pickups[0]->shipper }}</td>
+                                        <td>{{ $value->deliveries[0]->consignee }}</td>
+                                        <td>
+                                            <button class="closeBtn dnoo">
+                                                {{ $value->booked ? 'Booked' : 'Not Booked' }}
                                             </button>
-                                            <div class="selecter flex-column">
-                                                <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
-                                                        <i class="fa fa-eye"></i>
-                                                        <span>View</span>
-                                                    </a>
-                                                </div>
-                                                <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit",$value->id) }}"
-                                                        target="_blank" class="editButton">
-                                                        <i class="fa fa-edit"></i>
-                                                        <span>Edit</span>
-                                                    </a>
-                                                </div>
-                                                <div class="delete">
-                                                    <form action="{{route("delete_data"
-                                                    ,$value->id)}}">
-                                                        @csrf
-                                                        <button>
-                                                            <i class="fa fa-trash"></i>
-                                                            <span>Delete</span>
-                                                        </button>
-                                                    </form>
+                                        </td>
+                                        <td>
+                                            <div class="wrapp">
+                                                <button class="saveBtn p010 w-100">
+                                                    Action
+                                                    <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <div class="selecter flex-column">
+                                                    <div class="delete">
+                                                        <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
+                                                            <i class="fa fa-eye"></i>
+                                                            <span>View</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="delete">
+                                                        <a href="{{ route('desa.dispatcher.dispatches.edit', $value->id) }}"
+                                                            target="_blank" class="editButton">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span>Edit</span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="delete">
+                                                        <form action="">
+                                                            @csrf
+                                                            <button>
+                                                                <i class="fa fa-trash"></i>
+                                                                <span>Delete</span>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -212,13 +211,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -255,13 +254,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -319,13 +318,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -362,13 +361,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -393,16 +392,5 @@
 
             </div>
         </div>
-
     </div>
-</div>
-
 @endsection
-{{-- <script>
-    $(document).ready(function(){
-            $('.OpenDelete').on('click', function() {
-            $('#delete').modal('show');
-            $('#ID').val($(this).data('id'));
-        });
-    });
-</script> --}}

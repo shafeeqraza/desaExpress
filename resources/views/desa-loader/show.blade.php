@@ -12,12 +12,12 @@
             <div class="main-head-btns">
                 <div class="col-lg-12 d-flex justify-content-end actionsView">
                     <a href="{{ route("desa.loader.map", 1) }}"><button class="saveBtn">Map</button></a>
-
+{{--
                     <a style="margin-left: 10px;" >
                     <button class="closeBtn">
                     Delete
                     </button>
-                    </a>
+                    </a> --}}
                 </div>
 
             </div>
@@ -31,43 +31,41 @@
                     <div class="basic-card mb2">
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Load #:</label>
-                            <h5>489-789</h5>
+                            <h5>{{ $load->custom_trip_number }}</h5>
                         </div>
-                        <div class="load mt2 d-flex justify-content-between align-items-center">
+                        {{-- <div class="load mt2 d-flex justify-content-between align-items-center">
                             <label for="">Invoice #: &nbsp;&nbsp; <span class="invoiceName"></span> </label>
                             <input type="file" hidden id="invoice-input">
                             <label for="invoice-input" class="dispatch-load-btn">Upload Invoice</label>
-                        </div>
+                        </div> --}}
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Bol</label>
-                            <h5>489-789</h5>
+                            <h5>{{ $load->pickups[0]->bol }}</h5>
                         </div>
 
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">1 Driver:</label>
-                            <h5>Bulger</h5>
+                            <h5>{{ $load->driver_username }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Truck / Trailer</label>
-                            <h5>20 / 28</h5>
+                            <h5>{{ $load->truck_number }} / {{ $load->trailer }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Pickup Date</label>
-                            <h5>07/28/2021</h5>
+                            <h5>{{ $load->pickups[0]->pickup_date }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Delivery Date</label>
-                            <h5>07/28/2021</h5>
+                            <h5>{{ $load->deliveries[0]->delivery_date }}</h5>
                         </div>
-                        <div class="load mt2 load-from d-flex">
+                        <div class="load mt2 load-from d-flex justify-content-between">
                             <label for="">From</label>
-                            <h5> HALEX HAHA68
-                                7715 HOMESTEAD DRIVE,, HAMILTON, IN</h5>
+                            <h5> {{$load->pickups[0]->shipper}}</h5>
                         </div>
-                        <div class="load mt2 load-from d-flex">
+                        <div class="load mt2 load-from d-flex justify-content-between">
                             <label for="">To</label>
-                            <h5>HOME DEPOT IB XD05
-                                500 GATEWAY BLVD,, Monroe, OH</h5>
+                            <h5>{{ $load->deliveries[0]->consignee }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Miles</label>
@@ -79,15 +77,15 @@
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Customer Required Info</label>
-                            <!-- <h5>07/28/2021</h5> -->
+                            <h5>{{ $load->pickups[0]->customer_required_info }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Note</label>
-                            <!-- <h5>07/28/2021</h5> -->
+                            <h5>{{ $load->routes[0]->notes }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Weight</label>
-                            <h5>0.0</h5>
+                            <h5>{{ number_format($load->pickups[0]->weight, 2) }}</h5>
                         </div>
                     </div>
                 </div>
@@ -98,7 +96,7 @@
                     <div class="basic-card mb2">
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Primary Fee</label>
-                            <!-- <h5>489-789</h5> -->
+                            <h5>${{ number_format($load->primary_fee) }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Flat Fee</label>
@@ -106,24 +104,20 @@
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Fuel Surcharge Fee</label>
-                            <!-- <h5>Flat Fee</h5> -->
+                            <h5>${{ number_format($load->fsc_amount, 2) }}</h5>
                         </div>
 
-                        <div class="load mt2 d-flex justify-content-between">
-                            <label for="">Flat Fee:</label>
-                            <h5>$0.00</h5>
-                        </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Total Charge</label>
                             <h5>$0.00</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Invoice Advance</label>
-                            <h5>$0.00</h5>
+                            <h5>${{ number_format($load->invoice_advance, 2) }}</h5>
                         </div>
                         <div class="load mt2 d-flex justify-content-between">
                             <label for="">Weight</label>
-                            <h5>0.0</h5>
+                            <h5>{{ number_format($load->pickups[0]->weight, 2) }}</h5>
                         </div>
                     </div>
                 </div>
@@ -407,12 +401,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 add-note-sec mb2">
+        {{-- <div class="col-12 add-note-sec mb2">
 
         </div>
         <div class="col-lg-12 d-flex align-items-center justify-content-start mb10">
             <button id="add-note" class="saveBtn">Add Note</button>
-        </div>
+        </div> --}}
     </div>
 </div>
 <script>

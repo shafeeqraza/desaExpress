@@ -1,7 +1,7 @@
 @extends('desa-loader.layouts.app')
 @section('content')
 
-    <div class="loads-mainBox mt10">
+    <div class="loads-mainBox mt10" style="min-height: 90vh;">
         <div class="container">
             <div class="mainHeading">
                 <h1>
@@ -17,7 +17,12 @@
                     <input type="search">
                 </div> -->
             </div>
-
+            @if(session("status"))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ session("status") }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             <div class="overflow mb7">
                 <!-- <div class="loads-tblBox">
                     <div class="loads-tablecontainer">
@@ -349,7 +354,39 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($dispatches as $dispatch)
                         <tr>
+                            <td>{{ $dispatch->custom_trip_number }}</td>
+                            <td>{{ $dispatch->pickups[0]->pickup_date }}</td>
+                            <td>{{ $dispatch->deliveries[0]->delivery_date }}</td>
+                            <td>{{ $dispatch->truck_number }}</td>
+                            <td>{{ $dispatch->customer_name }}</td>
+                            <td>{{ $dispatch->pickups[0]->shipper }}</td>
+                            <td>{{ $dispatch->deliveries[0]->consignee }}</td>
+                            <td>
+                                <div class="th1 ml2 d-flex position-relative">
+                                    <span class="d-flex w-100">
+                                        <i class="far fa-eye loads-btnIcon position-absolute"></i>
+                                        <a href="{{ route("desa.loader.show", $dispatch->id) }}"> <button class="closeBtn">
+                                                View
+                                            </button>
+                                        </a>
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="th1 ml2 d-flex position-relative">
+                                    <form action="{{ route("desa.loader.bookLoad", $dispatch->id) }}" method="post">
+                                        @csrf
+                                        <button class="saveBtn">
+                                            Book
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                        {{-- <tr>
                             <td>601 123</td>
                             <td>08/02/2021</td>
                             <td>25/02/2021</td>
@@ -406,11 +443,13 @@
                                     </a>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> --}}
+
+
+
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 @endsection
