@@ -12,14 +12,14 @@
             <div class="main-head-btns">
                 <div class="col-lg-12 d-flex justify-content-end actionsView">
                     <a href="{{ route("desa.dispatcher.dispatches.map", 1) }}"><button class="saveBtn">Map</button></a>
-                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                    {{-- <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
                         <button class="saveBtn">Edit</button>
-                    </a>
-                    <a style="margin-left: 10px;" >
+                    </a> --}}
+                    {{-- <a style="margin-left: 10px;" >
                     <button class="closeBtn">
                     Delete
                     </button>
-                    </a>
+                    </a> --}}
                 </div>
 
             </div>

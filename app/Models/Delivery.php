@@ -15,4 +15,12 @@ class Delivery extends Model
         'delivery_date',
         'instructions'
     ];
+
+    public function deliveryable()
+    {
+        return $this->morphTo();
+        // return $this->hasMany('App\Models\DesaDispatch',);
+    }
 }
+
+

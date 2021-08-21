@@ -8,7 +8,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd("index");
+        return view("public.login");
+        // dd("index");
     }
 
     public function register()

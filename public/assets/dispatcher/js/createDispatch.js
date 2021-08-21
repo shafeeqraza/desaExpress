@@ -14,45 +14,47 @@ $(document).ready(function () {
                 <div class="row mt1">
                     <div class="col-lg-4">
                         <label for="">Shipper</label>
-                        <input type="text" placeholder="Henry">
+                        <input type="text" placeholder="Henry" name="pickupShipper[]" required>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Pick Up Date</label>
-                        <input type="date">
+                        <input type="date" name="pickupDate[]" id="" required>
 
                     </div>
                     <div class="col-lg-4">
                         <label for="">BOL</label>
-                        <input type="text"placeholder="12">
+                        <input type="text" id="" placeholder="12" name="pickupBol[]" required>
+
                     </div>
                 </div>
-                <div class="row mt2 mb2">
+                <div class="row mt2">
                     <div class="col-lg-8 d-flex flex-column mb2">
                         <label for="">Instructions</label>
-                        <textarea cols="30" rows="5" placeholder="Henry"></textarea>
+                        <textarea name="pickupInstructions[]" id="" cols="30" rows="5" placeholder="Henry"></textarea>
                     </div>
                     <div class="col-lg-8 d-flex flex-column mb2">
                         <label for="">Customer Required Info (Included On Invoice)</label>
-                        <textarea cols="30" rows="5" placeholder="Henry"></textarea>
+                        <textarea name="pickupCustomerInfo[]" id="" cols="30" rows="5" placeholder="Henry" required></textarea>
                     </div>
                     <div class="row mt1">
                         <div class="col-lg-4">
                             <label for="">Weight</label>
-                            <input type="text" placeholder="Henry">
+                            <input type="text" placeholder="Henry" name="pickupWeight[]" required>
                         </div>
                         <div class="col-lg-4">
                             <label for="">Quantity</label>
-                            <input type="date">
+                            <input type="date" name="pickupQuantity[]" id="" required>
+
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label for="types">Type</label>
-                            <select id="types">
+                            <select id="types" name="pickupType[]" required>
                                 <option value="Boxes">Boxes</option>
                             </select>
                         </div>
                         <div class="col-lg-8 d-flex flex-column mt2">
-                            <label for="">Customer Required Info (Included On Invoice)</label>
-                            <textarea cols="30" rows="5" placeholder="Henry"></textarea>
+                            <label for="">Notes</label>
+                            <textarea name="pickupNotes[]" id="" cols="30" rows="5" placeholder="Notes" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -63,27 +65,25 @@ $(document).ready(function () {
         $("#routing-stop-card .routing-stop-next-sec").append(`
             <div class="added-routing-stop-btn">
                 <hr>
-                <div class="basic-card-head mt3 mb2 d-flex justify-content-between">
-                    <h5>Routing Stop <span>(Optional)</span></h5>
-                    <i class="fas fa-minus-circle"></i>
+                <div class="basic-card-head mt3 mb2">
+                    <h5>Routing Stop</h5>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label for="">Routing Stop</label>
-                        <input type="text" placeholder="Henry">
-                    </div>
-                    <div class="col-lg-4">
-                        <label for="">Routing Stop Date</label>
-                        <input type="date" name="" id="">
-                    </div>
-                    <div class="col-lg-8 d-flex flex-column mt2">
-                        <label for="">Instructions</label>
-                        <textarea name="" id="" cols="30" rows="5" placeholder="Instructions"></textarea>
-                    </div>
-                    <div class="col-lg-8 d-flex flex-column mt2">
-                        <label for="">Notes</label>
-                        <textarea name="" id="" cols="30" rows="5" placeholder="Notes"></textarea>
-                    </div>
+                <div class="col-lg-4">
+                    <label for="">Routing Stop</label>
+                    <input type="text" placeholder="Henry" name="routeRoutingStop[]">
+                </div>
+                <div class="col-lg-4">
+                    <label for="">Routing Stop Date</label>
+                    <input type="date" name="routeRoutingStopDate[]" id="">
+
+                </div>
+                <div class="col-lg-8 d-flex flex-column mt2">
+                    <label for="">Instructions</label>
+                    <textarea name="routeInstructions[]" id="" cols="30" rows="5" placeholder="Instructions"></textarea>
+                </div>
+                <div class="col-lg-8 d-flex flex-column mt2">
+                    <label for="">Notes</label>
+                    <textarea name="routeNotes[]" id="" cols="30" rows="5" placeholder="Notes"></textarea>
                 </div>
             </div>
         `);
@@ -96,20 +96,21 @@ $(document).ready(function () {
                     <h5>Delivery</h5>
                     <i class="fas fa-minus-circle"></i>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label for="">Consignee</label>
-                        <input type="text" placeholder="Henry">
-                    </div>
-                    <div class="col-lg-4">
-                        <label for="">Delivery Date</label>
-                        <input type="date" name="" id="">
-                    </div>
+                <div class="basic-card-head mt3 mb2">
+                    <h5>Delivery</h5>
+                </div>
+                <div class="col-lg-4">
+                    <label for="">Consignee</label>
+                    <input type="text" placeholder="Henry" name="deliveryConsignee[]" required>
+                </div>
+                <div class="col-lg-4">
+                    <label for="">Delivery Date</label>
+                    <input type="date" name="deliveryDate[]" id="" required>
                 </div>
                 <div class="col-lg-8 d-flex flex-column mt2">
                     <label for="">Instructions</label>
-                    <textarea name="" id="" cols="30" rows="5" placeholder="Instructions"></textarea>
-                </div>
+                    <textarea name="deliveryInstructions[]" id="" cols="30" rows="5" placeholder="Instructions" required></textarea>
+                </div
             </div>
         `);
     });
@@ -119,7 +120,7 @@ $(document).ready(function () {
                 <div class="row">
                     <label  for="fuel-expense">Expense Category</label>
                     <div class="wrapp">
-                        <select class="fuel-dropdown" name="fuel" id="added-fuel-expense">
+                        <select class="fuel-dropdown" name="fuelCategory" id="added-fuel-expense">
                             <option value="Fuel">Fuel</option>
                             <option value="Refer Fuel">Refer Fuel</option>
                         </select>
@@ -130,10 +131,12 @@ $(document).ready(function () {
                     <label for="">Amount</label>
                     <div class="dollar-input">
                         <label for=""><i class="fas fa-dollar-sign"></i></label>
-                        <input type="text" placeholder="0.00">
+                        <input type="text" placeholder="0.00" name="fuelExpense">
                     </div>
                 </div>
-                <button id="remove-fuel-expense-btn"><i class="fas fa-minus-circle"></i> Remove Fuel Expenses</button>
+                <button id="remove-fuel-expense-btn">
+                    <i class="fas fa-minus-circle"></i> Remove Fuel Expenses
+                </button>
             </div>
         `);
         $("#remove-fuel-expense-btn").click(function () {
@@ -151,11 +154,12 @@ $(document).ready(function () {
                     <label for="">Amount</label>
                     <div class="dollar-input">
                         <label for=""><i class="fas fa-dollar-sign"></i></label>
-                        <input type="text" placeholder="0.00">
+                        <input type="text" placeholder="0.00" name="truckExpense">
                     </div>
                 </div>
-
-                <button id="remove-truck-expense-btn"><i class="fas fa-minus-circle"></i>Remove Truck Expenses</button>
+                <button id="remove-truck-expense-btn">
+                    <i class="fas fa-minus-circle"></i>Remove Truck Expenses
+                </button>
             </div>
         `);
 
@@ -175,10 +179,12 @@ $(document).ready(function () {
                     <label for="">Amount</label>
                     <div class="dollar-input">
                         <label for=""><i class="fas fa-dollar-sign"></i></label>
-                        <input type="text" placeholder="0.00">
+                        <input type="text" placeholder="0.00" name="referFuelAmount">
                     </div>
                 </div>
-                <button id="remove-refer-fuel-expense-btn"><i class="fas fa-minus-circle"></i>Remove Refer Fuel Expenses</button>
+                <button id="remove-refer-fuel-expense-btn">
+                    <i class="fas fa-minus-circle"></i>Remove Refer Fuel Expenses
+                </button>
             </div>
         `);
 

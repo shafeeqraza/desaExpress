@@ -10,8 +10,8 @@ class Pickup extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pickable_id',
-        'pickable_type',
+        'pickupable_id',
+        'pickupable_type',
         'shipper',
         'pickup_date',
         'bol',
@@ -22,4 +22,10 @@ class Pickup extends Model
         'type',
         'notes'
     ];
+
+    public function pickupable()
+    {
+        return $this->morphTo();
+    }
+
 }

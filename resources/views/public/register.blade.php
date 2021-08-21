@@ -30,19 +30,31 @@
                     <div class="type-input col-lg-12">
                         <select class="col-lg-12 mb-3" name="type" id="">
                             <option value="">Select type</option>
-                            <option value="dispatcher" @if (@old('type') == 'dispatcher') selected @endif>Dispatcher</option>
-                            <option value="driver" @if (@old('type') == 'driver') selected @endif>Driver</option>
+                            {{-- <option value="desa dispatcher" @if (@old('type')=='dispatcher' ) selected @endif>Desa Dispatcher
+                            </option> --}}
+                            <option value="desa driver" @if (@old('type')=='driver' ) selected @endif>Desa Driver</option>
                         </select>
                     </div>
                     @error('type')
-                        <p class="text-danger">{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <div class="fullname-input">
-                        <label class="mb-3 mt-3" for="">Full Name</label>
-                        <input type="text" name="name" class="col-lg-12 mb-3" value="{{ @old('name') }}">
+                    <div class="firstname-input">
+                        <label class="mb-3 mt-3" for="">First Name</label>
+                        <input type="text" name="first_name" class="col-lg-12 mb-3" value="{{ @old('first_name') }}">
                     </div>
-                    @error('name')
-                        <p class="text-danger">{{ $message }}</p>
+                    @error('first_name')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+
+                    @error('type')
+                    <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                    <div class="lastname-input">
+                        <label class="mb-3 mt-3" for="">Last Name</label>
+                        <input type="text" name="last_name" class="col-lg-12 mb-3" value="{{ @old('last_name') }}">
+                    </div>
+                    @error('last_name')
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                     <div class="email-input">
                         <label class="mb-3 mt-3" for="">Email Address</label>
@@ -50,21 +62,21 @@
                             value="{{ @old('email') }}">
                     </div>
                     @error('email')
-                        <p class="text-danger">{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                     <div class="password-input">
                         <label class="mb-3 mt-3" for="">Password</label>
                         <input type="password" name="password" class="col-lg-12 mb-3" />
                     </div>
                     @error('password')
-                        <p class="text-danger">{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                     <div class="confirm-password-input">
                         <label class="mb-3 mt-3" for="">Confirm Password</label>
                         <input type="password" name="password_confirmation" class="col-lg-12 mb-3">
                     </div>
                     @error('password_confirmation')
-                        <p class="text-danger">{{ $message }}</p>
+                    <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="signup-btn d-flex">

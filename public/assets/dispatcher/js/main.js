@@ -95,8 +95,8 @@ $(document).ready(() => {
 // })
 
 // burger
-$(document).ready(function () {
-    $("#nav-icon1").click(function () {
+$(document).ready(function() {
+    $("#nav-icon1").click(function() {
         $(this).toggleClass("open");
         if (this.classList.contains("open")) {
             $(".sider").css("display", "block");
@@ -121,7 +121,7 @@ function Utils() {}
 
 Utils.prototype = {
     constructor: Utils,
-    isElementInView: function (element, fullyInView) {
+    isElementInView: function(element, fullyInView) {
         var pageTop = $(window).scrollTop();
         var pageBottom = pageTop + $(window).height();
         var elementTop = $(element).offset().top;
@@ -141,8 +141,49 @@ $("#invoice-input").change((e) => {
     $(".invoiceName").text(e.target.files[0].name);
 });
 // table js
-$(document).ready(function () {
+$(document).ready(function() {
     $(".myTable").DataTable();
+
+
+    // $(".deleteRecord").click(function() {
+    //     var id = $(this).data("id");
+    //     var token = $("meta[name='csrf-token']").attr("content");
+    //     $.ajax({
+    //         url: "delete_data/" + id,
+    //         type: 'DELETE',
+    //         data: {
+    //             "id": id,
+    //             "_token": token,
+    //         },
+    //         success: function() {
+    //             console.log("it Works");
+    //         }
+    //     });
+
+    // });
+
+    // $('.OpenDelete').on('click', function() {
+    //     $('#delete').modal('show');
+    //     $('#ID').val($(this).data('id'));
+    //     dis_id = $(this).data('id');
+    //     // alert(dis_id)
+    // });
+
+    // $('#deleteButton').on('click', function() {
+    //     $.ajax({
+    //         type: 'DELETE',
+    //         url: 'delete_data/' + $('#ID').val(),
+    //         data: {
+    //             "_token": "{{ csrf_token() }}",
+    //             id: dis_id,
+    //         },
+    //         success: function(data) {
+    //             if (data.message == 'success') {
+    //                 $('#delete').modal('hide');
+    //                 toastr.success('Customer Deleted Successfully', 'Success');
+    //                 location.reload();
+    //             }
+    //         }
+    //     });
+    // });
 });
-
-

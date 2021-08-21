@@ -20,6 +20,7 @@ class DesaDispatch extends Model
         'customer_name',
         'primary_fee',
         'primary_fee_type',
+        'fuel_expense_type',
         'additional',
         'detention',
         'lumper',
@@ -30,6 +31,22 @@ class DesaDispatch extends Model
         'invoice_advance',
         'truck_expense',
         'fuel_expense',
-        'refer_fuel_expense'
+        'refer_fuel_expense',
+        "booked",
+        "status"
     ];
+
+    public function deliveries(){
+        return $this->morphMany(Delivery::class, 'deliveryable');
+        // return $this->morphTo('App\Models\Delivery','deliveryable_id');
+    }
+
+    public function routes(){
+        return $this->morphMany(Route::class, 'routeable');
+        // return $this->morphTo('App\Models\Delivery','deliveryable_id');
+    }
+    public function pickups(){
+        return $this->morphMany(Pickup::class, 'pickupable');
+        // return $this->morphTo('App\Models\Delivery','deliveryable_id');
+    }
 }

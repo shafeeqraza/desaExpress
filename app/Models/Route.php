@@ -16,4 +16,10 @@ class Route extends Model
         'instructions',
         'notes',
     ];
+
+    public function routeable()
+    {
+        return $this->morphTo();
+        // return $this->hasMany('App\Models\DesaDispatch',);
+    }
 }

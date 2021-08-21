@@ -51,10 +51,10 @@ Route::middleware('guest')->group(function () {
 -------------------------------------------------------------------------------------------------------------------------------------------
 */
 
-Route::middleware("auth")->group(function() {
+Route::middleware("auth")->group(function () {
 
     // desa dispatcher routes
-    Route::middleware(["isDesaDispatcher"])->group(function() {
+    Route::middleware(["isDesaDispatcher"])->group(function () {
 
         Route::get('desa/dispatcher/my-account', [DesaDispatchController::class, "profile"])->name("desa.dispatcher.profile");
         Route::resource('/desa/dispatcher/dispatches', DesaDispatchController::class, [
@@ -77,6 +77,10 @@ Route::middleware("auth")->group(function() {
     Route::get('/desa/loader/loads', [DesaLoaderController::class, "loads"])->name("desa.loader.loads");
     Route::get('/desa/loader/{id}/map', [DesaLoaderController::class, "map"])->name("desa.loader.map");
     Route::get('/desa/loader/{id}/show', [DesaLoaderController::class, "show"])->name("desa.loader.show");
+    // Route::get('/update_profile')
+    Route::post('/update_profile', [DesaDispatchController::class, "update"])->name('update_profile');
+    Route::post('/update_data', [DesaDispatchController::class, "updatedata"])->name('update_data');
+    // Route::get('delete_data/{id}', 'DesaDispatchController@destroy_data')->name('delete_data.destroy');
 
 
 

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container d-flex align-items-center">
-      <a class="navbar-brand" href="{{ route("desa.loader.index") }}">
+      <a class="navbar-brand" href="{{ route("desa.loader.profile") }}">
         <img src="{{ asset("assets/loader/img/SVG/logo.svg") }}" height="" width="100%" alt="logo">
       </a>
       <div class="navbar-collapse justify-content-between align-items-center" id="navbarSupportedContent">
         <ul class="navbar-nav align-items-center">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="{{ route("desa.loader.index") }}">MY INFO</a>
+            <a class="nav-link " aria-current="page" href="{{ route("desa.loader.profile") }}">MY INFO</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route("desa.loader.loads") }}">LOADS</a>

@@ -15,8 +15,8 @@ class CreateDesaDispatchesTable extends Migration
     {
         Schema::create('desa_dispatches', function (Blueprint $table) {
             $table->id();
-            $table->integer("driver_id")->nullable();
-            $table->string("driver_name")->nullable();
+            $table->string("custom_trip_number")->nullable();
+            $table->string("driver_username")->nullable();
             $table->integer("dispatcher_id")->nullable();
             $table->string("truck_number")->nullable();
             $table->string("trailer")->nullable();
@@ -35,6 +35,8 @@ class CreateDesaDispatchesTable extends Migration
             $table->string("truck_expense")->nullable();
             $table->string("fuel_expense")->nullable();
             $table->string("refer_fuel_expense")->nullable();
+            $table->boolean("status")->default(0);
+            $table->boolean("booked")->default(0);
             $table->timestamps();
         });
     }

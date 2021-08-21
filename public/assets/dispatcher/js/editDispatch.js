@@ -1,6 +1,6 @@
-$(document).ready(function () {
+$(document).ready(function() {
     // for delete appended cards
-    $(document).on('click', '.fa-minus-circle', function (e) {
+    $(document).on('click', '.fa-minus-circle', function(e) {
         e.target.parentNode.parentNode.remove();
     })
     $('#pickup-btn').on('click', () => {
@@ -124,7 +124,7 @@ $(document).ready(function () {
                         <label  for="fuel-expense">Expense Category</label>
                         <div class="wrapp">
 
-<select class="fuel-dropdown" name="fuel" id="added-fuel-expense">
+<select class="fuel-dropdown" name="fuelExpenseType" id="added-fuel-expense">
                             <option value="Fuel">Fuel</option>
                             <option value="Refer Fuel">Refer Fuel</option>
                         </select>
@@ -142,12 +142,12 @@ $(document).ready(function () {
                         <button id="remove-fuel-expense-btn"><i class="fas fa-minus-circle"></i>Remove Fuel Expenses</button>
                         </div>
                         `);
-        $('#remove-fuel-expense-btn').click(function () {
+        $('#remove-fuel-expense-btn').click(function() {
             $('.added-fuel-expense-card').remove();
             $('#add-fuel-btn').show();
         });
     })
-    $('#add-fuel-btn').click(function () {
+    $('#add-fuel-btn').click(function() {
         $(this).hide();
     });
     $('#add-truck-expense-btn').on('click', () => {
@@ -157,19 +157,19 @@ $(document).ready(function () {
                             <label for="">Amount</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00">
+                                <input type="text" placeholder="0.00" >
                             </div>
                         </div>
 
-                        <button id="remove-truck-expense-btn"><i class="fas fa-minus-circle"></i>Remove Truck Expenses</button>
+                        <button type="button" id="remove-truck-expense-btn"><i class="fas fa-minus-circle"></i>Remove Truck Expenses</button>
                         </div>
                         `);
-        $('#remove-truck-expense-btn').click(function () {
+        $('#remove-truck-expense-btn').click(function() {
             $('.added-truck-expense-card').remove();
             $('#add-truck-expense-btn').show();
         });
     })
-    $('#add-truck-expense-btn').click(function () {
+    $('#add-truck-expense-btn').click(function() {
         $(this).hide();
     });
     $('#add-refer-fuel-btn').on('click', () => {
@@ -186,12 +186,12 @@ $(document).ready(function () {
                         <button id="remove-refer-fuel-expense-btn"><i class="fas fa-minus-circle"></i>Remove Refer Fuel Expenses</button>
                         </div>
                         `);
-        $('#remove-refer-fuel-expense-btn').click(function () {
+        $('#remove-refer-fuel-expense-btn').click(function() {
             $('.added-refer-fuel-expense-card').remove();
             $('#add-refer-fuel-btn').show();
         });
     })
-    $('#add-refer-fuel-btn').click(function () {
+    $('#add-refer-fuel-btn').click(function() {
         $(this).hide();
     });
 })

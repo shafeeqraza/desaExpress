@@ -17,21 +17,31 @@ class AuthenticationController extends Controller
         // dd($request->type);
         $this->validate($request, [
             "type" => "required",
-            "name" => "required|max:255",
-            "email" => "required|max:255",
+            "first_name" => "required|max:225",
+            "last_name" =>"required|max:225",
+            "email" => "required|max:225",
             // 'password' => 'required|min:8|confirmed',
             "password" => "required|confirmed",
         ]);
 
         User::create([
-            "name" => $request->name,
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
             "email" => $request->email,
             "password" => Hash::make($request->password),
             "role" => $request->type
         ]);
 
         Auth::attempt($request->only("email", "password"));
-        return redirect()->route("my-account");
+        if(auth()->user()->role === "desa driver" || auth()->user()->role === "desa loader") {
+
+            return redirect()->route("desa.loader.profile");
+
+        }else if(auth()->user()->role === "desa dispatcher" || auth()->user()->role === "desa dispatcher"){
+
+            return redirect()->route("desa.dispatcher.profile");
+
+        }
     }
 
     public function login(Request $request)
