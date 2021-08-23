@@ -39,7 +39,7 @@ $(document).ready(function () {
                     <div class="row mt1">
                         <div class="col-lg-4">
                             <label for="">Weight</label>
-                            <input type=" number" placeholder="Henry" name="pickupWeight[]">
+                            <input type="number" placeholder="Henry" name="pickupWeight[]">
                         </div>
                         <div class="col-lg-4">
                             <label for="">Quantity</label>

@@ -111,11 +111,11 @@
                             <div class="row mt1">
                                 <div class="col-lg-4">
                                     <label for="">Weight</label>
-                                    <input type="text" placeholder="Henry" name="pickupWeight[]" value="{{ $item->weight }}">
+                                    <input type="number" placeholder="Henry" name="pickupWeight[]" value="{{ $item->weight }}">
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="">Quantity</label>
-                                    <input type="date" name="pickupQuantity[]" id="" value="{{ $item->quantity }}">
+                                    <input type="number" name="pickupQuantity[]" id="" value="{{ $item->quantity }}">
 
                                 </div>
                                 <div class="col-lg-4 d-flex flex-column">
@@ -232,7 +232,7 @@
                             <label for="">Primary Fee</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="primaryFee"
+                                <input type="number" placeholder="0.00" name="primaryFee"
                                     value="{{ $detailsedit->primary_fee }}">
                             </div>
                         </div>
@@ -256,7 +256,7 @@
                             <label for="">Additional</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="additional"
+                                <input type="number" placeholder="0.00" name="additional"
                                     value="{{ $detailsedit->additional }}">
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                             <label for="">Detention</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="detention"
+                                <input type="number" placeholder="0.00" name="detention"
                                     value="{{ $detailsedit->detention }}">
                             </div>
                         </div>
@@ -272,14 +272,14 @@
                             <label for="">Lumper</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="lumper" value="{{ $detailsedit->lumper }}">
+                                <input type="number" placeholder="0.00" name="lumper" value="{{ $detailsedit->lumper }}">
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <label for="">Stop Off</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="stopOff"
+                                <input type="number" placeholder="0.00" name="stopOff"
                                     value="{{ $detailsedit->stop_off }}">
                             </div>
                         </div>
@@ -287,7 +287,7 @@
                             <label for="">Tarp Fee</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="tarpFee"
+                                <input type="number" placeholder="0.00" name="tarpFee"
                                     value="{{ $detailsedit->tarp_fee }}">
                             </div>
                         </div>
@@ -300,7 +300,7 @@
                             <label for="">FSC Amount</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="fscAmount"
+                                <input type="number" placeholder="0.00" name="fscAmount"
                                     value="{{ $detailsedit->fsc_amount }}">
                             </div>
                         </div>
@@ -335,7 +335,7 @@
                             <label for="">Invoice Advance</label>
                             <div class="dollar-input">
                                 <label for=""><i class="fas fa-dollar-sign"></i></label>
-                                <input type="text" placeholder="0.00" name="invoiceAdvance"
+                                <input type="number" placeholder="0.00" name="invoiceAdvance"
                                     value="{{ $detailsedit->invoice_advance }}">
                             </div>
                         </div>

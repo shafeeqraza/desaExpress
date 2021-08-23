@@ -100,7 +100,7 @@
                     <div class="row mt1">
                         <div class="col-lg-4">
                             <label for="">Weight</label>
-                            <input type="text" placeholder="Henry" name="pickupWeight[]" required>
+                            <input type="number" placeholder="Henry" name="pickupWeight[]" required>
                         </div>
                         <div class="col-lg-4">
                             <label for="">Quantity</label>
