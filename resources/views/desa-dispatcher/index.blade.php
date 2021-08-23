@@ -1,25 +1,23 @@
 @extends('desa-dispatcher.layouts.app')
 @section('content')
-<div class="loads-mainBox mt10">
-    <div class="container mb7">
-        <div class="mainHeading d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-start">
-                <h1>
-                    My Dispatches
-                </h1>
+    <div class="loads-mainBox mt10">
+        <div class="container mb7">
+            <div class="mainHeading d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-start">
+                    <h1>
+                        My Dispatches
+                    </h1>
+                </div>
+                <a href="{{ route('desa.dispatcher.dispatches.create') }}" class="tNone d-flex align-items-end" target="_blank">
+                    <button class="saveBtn d-flex align-items-center justify-content-between f16">
+                        <i class="fa fa-plus-circle"></i>
+                        Add Dispatch
+                    </button>
+                </a>
             </div>
-            <a href="{{ route("desa.dispatcher.dispatches.create") }}" class="tNone d-flex align-items-end"
-                target="_blank">
-                <button class="saveBtn d-flex align-items-center justify-content-between f16">
-                    <i class="fa fa-plus-circle"></i>
-                    Add Dispatch
-                </button>
-            </a>
-        </div>
 
         <div class="">
             <div class="loads-tblBox">
-
                 <div class="capsol d-flex mt5">
                     <div class="box1">
                         <div class="subbox1">
@@ -29,7 +27,7 @@
                         </div>
                         <div class="subbox2">
                             <label for="">
-                                {{count($details)}}
+                                {{ count($details) }}
                             </label>
                         </div>
                     </div>
@@ -41,7 +39,7 @@
                         </div>
                         <div class="subbox2">
                             <label for="">
-                                {{$booked_data}}
+                                {{ $booked_data }}
                             </label>
                         </div>
                     </div>
@@ -94,9 +92,9 @@
 
                     </div>
                     <!-- <div class="loads-search position-absolute">
-                            <i class="fas fa-search"></i>
-                            <input type="search" placeholder="Search">
-                        </div> -->
+                                <i class="fas fa-search"></i>
+                                <input type="search" placeholder="Search">
+                            </div> -->
                 </div>
 
                 <div class="tab-content" id="pills-tabContent">
@@ -165,9 +163,8 @@
                                                     {{-- </form> --}}
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -213,13 +210,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -256,13 +253,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -320,13 +317,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -363,13 +360,13 @@
                                             </button>
                                             <div class="selecter flex-column">
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.show', 1) }}">
                                                         <i class="fa fa-eye"></i>
                                                         <span>View</span>
                                                     </a>
                                                 </div>
                                                 <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit", 1) }}">
+                                                    <a href="{{ route('desa.dispatcher.dispatches.edit', 1) }}">
                                                         <i class="fa fa-edit"></i>
                                                         <span>Edit</span>
                                                     </a>
@@ -394,7 +391,6 @@
 
             </div>
         </div>
-
     </div>
 </div>
 <script>
@@ -407,4 +403,5 @@
     @endif
 
 </script>
+
 @endsection

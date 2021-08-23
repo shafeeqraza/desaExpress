@@ -75,6 +75,7 @@ Route::middleware("auth")->group(function () {
     Route::get('/desa/loader/my-account', [DesaLoaderController::class, "index"])->name("desa.loader.profile");
     Route::get('/desa/loader/my-loads', [DesaLoaderController::class, "myLoads"])->name("desa.loader.my-loads");
     Route::get('/desa/loader/loads', [DesaLoaderController::class, "loads"])->name("desa.loader.loads");
+    Route::post('/desa/loader/load/book/{id}', [DesaLoaderController::class, "book"])->name("desa.loader.bookLoad");
     Route::get('/desa/loader/{id}/map', [DesaLoaderController::class, "map"])->name("desa.loader.map");
     Route::get('/desa/loader/{id}/show', [DesaLoaderController::class, "show"])->name("desa.loader.show");
     // Route::get('/update_profile')

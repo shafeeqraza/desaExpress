@@ -35,7 +35,7 @@ class CreateDesaDispatchesTable extends Migration
             $table->string("truck_expense")->nullable();
             $table->string("fuel_expense")->nullable();
             $table->string("refer_fuel_expense")->nullable();
-            $table->boolean("status")->default(0);
+            $table->string("status")->default(0);
             $table->boolean("booked")->default(0);
             $table->timestamps();
         });
