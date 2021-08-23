@@ -56,7 +56,10 @@ Route::middleware("auth")->group(function () {
     // desa dispatcher routes
     Route::middleware(["isDesaDispatcher"])->group(function () {
 
+        // disoatcher profile
         Route::get('desa/dispatcher/my-account', [DesaDispatchController::class, "profile"])->name("desa.dispatcher.profile");
+        Route::post('desa/dispatcher/my-account', [DesaDispatchController::class, "updateProfile"]);
+
         Route::resource('/desa/dispatcher/dispatches', DesaDispatchController::class, [
             "names" => [
                 "index" => "desa.dispatcher.dispatches",
@@ -65,7 +68,7 @@ Route::middleware("auth")->group(function () {
                 "store" => "desa.dispatcher.dispatches.store",
                 "edit" => "desa.dispatcher.dispatches.edit",
                 "update" => "desa.dispatcher.dispatches.update",
-                "destory" => "desa.dispatcher.dispatches.destory"
+                "destroy" => "desa.dispatcher.dispatches.destroy"
             ]
         ]);
         Route::get('/desa/dispatcher/dispatches/{id}/map', [DesaDispatchController::class, "map"])->name("desa.dispatcher.dispatches.map");
@@ -81,9 +84,9 @@ Route::middleware("auth")->group(function () {
     // Route::get('/update_profile')
 
     // uzair route
-    Route::post('/update_profile', [DesaDispatchController::class, "update"])->name('update_profile');
-    Route::post('/update_data', [DesaDispatchController::class, "updatedata"])->name('update_data');
-    Route::get('delete_data/{id}', [DesaDispatchController::class,"destroy_data"])->name('delete_data');
+    // Route::post('/update_profile', [DesaDispatchController::class, "update"])->name('update_profile');
+    // Route::patch('/update_data', [DesaDispatchController::class, "updateData"])->name('update_data');
+    // Route::get('delete_data/{id}', [DesaDispatchController::class,"destroy_data"])->name('delete_data');
 
 
 

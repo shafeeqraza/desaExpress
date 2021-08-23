@@ -14,16 +14,16 @@ $(document).ready(function () {
                 <div class="row mt1">
                     <div class="col-lg-4">
                         <label for="">Shipper</label>
-                        <input type="text" placeholder="Henry" name="pickupShipper[]" required>
+                        <input type="text" placeholder="Henry" name="pickupShipper[]">
                     </div>
                     <div class="col-lg-4">
                         <label for="">Pick Up Date</label>
-                        <input type="date" name="pickupDate[]" id="" required>
+                        <input type="date" name="pickupDate[]" id="">
 
                     </div>
                     <div class="col-lg-4">
                         <label for="">BOL</label>
-                        <input type="text" id="" placeholder="12" name="pickupBol[]" required>
+                        <input type="text" id="" placeholder="12" name="pickupBol[]">
 
                     </div>
                 </div>
@@ -34,27 +34,27 @@ $(document).ready(function () {
                     </div>
                     <div class="col-lg-8 d-flex flex-column mb2">
                         <label for="">Customer Required Info (Included On Invoice)</label>
-                        <textarea name="pickupCustomerInfo[]" id="" cols="30" rows="5" placeholder="Henry" required></textarea>
+                        <textarea name="pickupCustomerInfo[]" id="" cols="30" rows="5" placeholder="Henry" ></textarea>
                     </div>
                     <div class="row mt1">
                         <div class="col-lg-4">
                             <label for="">Weight</label>
-                            <input type="text" placeholder="Henry" name="pickupWeight[]" required>
+                            <input type=" number" placeholder="Henry" name="pickupWeight[]">
                         </div>
                         <div class="col-lg-4">
                             <label for="">Quantity</label>
-                            <input type="date" name="pickupQuantity[]" id="" required>
+                            <input type="number" name="pickupQuantity[]" id="">
 
                         </div>
                         <div class="col-lg-4 d-flex flex-column">
                             <label for="types">Type</label>
-                            <select id="types" name="pickupType[]" required>
+                            <select id="types" name="pickupType[]">
                                 <option value="Boxes">Boxes</option>
                             </select>
                         </div>
                         <div class="col-lg-8 d-flex flex-column mt2">
                             <label for="">Notes</label>
-                            <textarea name="pickupNotes[]" id="" cols="30" rows="5" placeholder="Notes" required></textarea>
+                            <textarea name="pickupNotes[]" id="" cols="30" rows="5" placeholder="Notes"></textarea>
                         </div>
                     </div>
                 </div>
@@ -101,15 +101,15 @@ $(document).ready(function () {
                 </div>
                 <div class="col-lg-4">
                     <label for="">Consignee</label>
-                    <input type="text" placeholder="Henry" name="deliveryConsignee[]" required>
+                    <input type="text" placeholder="Henry" name="deliveryConsignee[]">
                 </div>
                 <div class="col-lg-4">
                     <label for="">Delivery Date</label>
-                    <input type="date" name="deliveryDate[]" id="" required>
+                    <input type="date" name="deliveryDate[]" id="">
                 </div>
                 <div class="col-lg-8 d-flex flex-column mt2">
                     <label for="">Instructions</label>
-                    <textarea name="deliveryInstructions[]" id="" cols="30" rows="5" placeholder="Instructions" required></textarea>
+                    <textarea name="deliveryInstructions[]" id="" cols="30" rows="5" placeholder="Instructions"></textarea>
                 </div
             </div>
         `);
@@ -131,10 +131,10 @@ $(document).ready(function () {
                     <label for="">Amount</label>
                     <div class="dollar-input">
                         <label for=""><i class="fas fa-dollar-sign"></i></label>
-                        <input type="text" placeholder="0.00" name="fuelExpense">
+                        <input type="number" placeholder="0.00" name="fuelExpense">
                     </div>
                 </div>
-                <button id="remove-fuel-expense-btn">
+                <button type="button" id="remove-fuel-expense-btn">
                     <i class="fas fa-minus-circle"></i> Remove Fuel Expenses
                 </button>
             </div>
@@ -154,10 +154,10 @@ $(document).ready(function () {
                     <label for="">Amount</label>
                     <div class="dollar-input">
                         <label for=""><i class="fas fa-dollar-sign"></i></label>
-                        <input type="text" placeholder="0.00" name="truckExpense">
+                        <input type="number" placeholder="0.00" name="truckExpense">
                     </div>
                 </div>
-                <button id="remove-truck-expense-btn">
+                <button type="button" id="remove-truck-expense-btn">
                     <i class="fas fa-minus-circle"></i>Remove Truck Expenses
                 </button>
             </div>
@@ -179,10 +179,10 @@ $(document).ready(function () {
                     <label for="">Amount</label>
                     <div class="dollar-input">
                         <label for=""><i class="fas fa-dollar-sign"></i></label>
-                        <input type="text" placeholder="0.00" name="referFuelAmount">
+                        <input type="number" placeholder="0.00" name="referFuelAmount">
                     </div>
                 </div>
-                <button id="remove-refer-fuel-expense-btn">
+                <button type="button" id="remove-refer-fuel-expense-btn">
                     <i class="fas fa-minus-circle"></i>Remove Refer Fuel Expenses
                 </button>
             </div>

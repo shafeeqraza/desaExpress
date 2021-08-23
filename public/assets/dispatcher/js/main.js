@@ -17,15 +17,16 @@ if (
     !navigator.userAgent.includes("Firefox") &&
     !navigator.userAgent.includes("iPad")
 ) {
-    $("body").css({
-        height: "6000px",
-    });
-    Scrollbar.init(document.querySelector(".my-scrollbar"));
+    // $("body").css({
+    //     height: "6000px",
+    // });
+    // Scrollbar.init(document.querySelector(".my-scrollbar"));
 }
+const some = false
 $(document).ready(() => {
-    $("body").addClass("iosDevice");
+    // $("body").addClass("iosDevice");
     var scrollCount = 0;
-    if (!navigator.userAgent.includes("Firefox")) {
+    if (!navigator.userAgent.includes("Firefox") && some) {
         setTimeout(() => {
             document
                 .getElementsByClassName("my-scrollbar")[0]

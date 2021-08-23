@@ -8,7 +8,8 @@
                         My Dispatches
                     </h1>
                 </div>
-                <a href="{{ route('desa.dispatcher.dispatches.create') }}" class="tNone d-flex align-items-end" target="_blank">
+                <a href="{{ route('desa.dispatcher.dispatches.create') }}" class="tNone d-flex align-items-end"
+                    target="_blank">
                     <button class="saveBtn d-flex align-items-center justify-content-between f16">
                         <i class="fa fa-plus-circle"></i>
                         Add Dispatch
@@ -16,69 +17,69 @@
                 </a>
             </div>
 
-        <div class="">
-            <div class="loads-tblBox">
-                <div class="capsol d-flex mt5">
-                    <div class="box1">
-                        <div class="subbox1">
-                            <label for="">
-                                All Loads
-                            </label>
+            <div class="">
+                <div class="loads-tblBox">
+                    <div class="capsol d-flex mt5">
+                        <div class="box1">
+                            <div class="subbox1">
+                                <label for="">
+                                    All Loads
+                                </label>
+                            </div>
+                            <div class="subbox2">
+                                <label for="">
+                                    {{ count($details) }}
+                                </label>
+                            </div>
                         </div>
-                        <div class="subbox2">
-                            <label for="">
-                                {{ count($details) }}
-                            </label>
+                        <div class="box1">
+                            <div class="subbox1">
+                                <label for="">
+                                    Booked
+                                </label>
+                            </div>
+                            <div class="subbox2">
+                                <label for="">
+                                    {{ $booked_data }}
+                                </label>
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="subbox1">
+                                <label for="">
+                                    Pending
+                                </label>
+                            </div>
+                            <div class="subbox2">
+                                <label for="">
+                                    500
+                                </label>
+                            </div>
+                        </div>
+                        <div class="box1">
+                            <div class="subbox1">
+                                <label for="">
+                                    Completed
+                                </label>
+                            </div>
+                            <div class="subbox2">
+                                <label for="">
+                                    500
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="box1">
-                        <div class="subbox1">
-                            <label for="">
-                                Booked
-                            </label>
-                        </div>
-                        <div class="subbox2">
-                            <label for="">
-                                {{ $booked_data }}
-                            </label>
-                        </div>
-                    </div>
-                    <div class="box1">
-                        <div class="subbox1">
-                            <label for="">
-                                Pending
-                            </label>
-                        </div>
-                        <div class="subbox2">
-                            <label for="">
-                                500
-                            </label>
-                        </div>
-                    </div>
-                    <div class="box1">
-                        <div class="subbox1">
-                            <label for="">
-                                Completed
-                            </label>
-                        </div>
-                        <div class="subbox2">
-                            <label for="">
-                                500
-                            </label>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="loads-subheadingBox loads-subheadingBox1 position-relative ">
-                    <div class="tabheading">
-                        <!-- tabs nav -->
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">Home</button>
-                            </li>
-                            {{-- <li class="nav-item" role="presentation">
+                    <div class="loads-subheadingBox loads-subheadingBox1 position-relative ">
+                        <div class="tabheading">
+                            <!-- tabs nav -->
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                        aria-selected="true">Home</button>
+                                </li>
+                                {{-- <li class="nav-item" role="presentation">
                                     <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
                                         data-bs-target="#pills-profile" type="button" role="tab"
                                         aria-controls="pills-profile" aria-selected="false">Profile</button>
@@ -88,89 +89,92 @@
                                         data-bs-target="#pills-contact" type="button" role="tab"
                                         aria-controls="pills-contact" aria-selected="false">Contact</button>
                                 </li> --}}
-                        </ul>
+                            </ul>
 
+                        </div>
+                        <!-- <div class="loads-search position-absolute">
+                                    <i class="fas fa-search"></i>
+                                    <input type="search" placeholder="Search">
+                                </div> -->
                     </div>
-                    <!-- <div class="loads-search position-absolute">
-                                <i class="fas fa-search"></i>
-                                <input type="search" placeholder="Search">
-                            </div> -->
-                </div>
 
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active overflow" id="pills-home" role="tabpanel"
-                        aria-labelledby="pills-home-tab">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active overflow" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
 
-                        <table class="table myTable">
-                            <thead>
-                                <tr>
-                                    <th>Loads</th>
-                                    <th>Pickup Date</th>
-                                    <th>Delivery Date</th>
-                                    <th>Truck</th>
-                                    <th>Driver</th>
-                                    <th>Customer</th>
-                                    <th>From</th>
-                                    <th>To</th>
-                                    <th>status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($details as $value)
-                                <tr>
-                                    <td>{{$value->custom_trip_number}}</td>
-                                    <td> {{$value->pickups[0]->pickup_date}}</td>
-                                    <td>{{$value->deliveries[0]->delivery_date}}</td>
-                                    <td>{{$value->truck_number}}</td>
-                                    <td>{{$value->driver_username}}</td>
-                                    <td>{{$value->customer_name}}</td>
-                                    <td>{{$value->pickups[0]->shipper}}</td>
-                                    <td>{{$value->deliveries[0]->consignee}}</td>
-                                    <td>
-                                        <button class="closeBtn dnoo">
-                                            {{$value->booked ? "Booked" : "Not Booked" }}
-                                        </button>
-                                    </td>
-                                    <td>
-                                        <div class="wrapp">
-                                            <button class="saveBtn p010 w-100">
-                                                Action
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <div class="selecter flex-column">
-                                                <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.show",$value->id) }}"
-                                                        target="_blank">
-                                                        <i class="fa fa-eye"></i>
-                                                        <span>View</span>
-                                                    </a>
-                                                </div>
-                                                <div class="delete">
-                                                    <a href="{{ route("desa.dispatcher.dispatches.edit",$value->id) }}"
-                                                        target="_blank" class="editButton">
-                                                        <i class="fa fa-edit"></i>
-                                                        <span>Edit</span>
-                                                    </a>
-                                                </div>
-                                                <div class="delete">
-                                                    {{-- <form action="#">
-                                                        @csrf --}}
-                                                    <a href="{{route('delete_data',$value->id)}}" onclick="return confirm('Are you sure you want to delete this Dis?');">
-                                                        <i class="fa fa-trash"></i>
-                                                        <span>Delete</span>
-                                                    </a>
-                                                    {{-- </form> --}}
-                                                </div>
-                                            </div>
-                                        </td>
+                            <table class="table myTable">
+                                <thead>
+                                    <tr>
+                                        <th>Loads</th>
+                                        <th>Pickup Date</th>
+                                        <th>Delivery Date</th>
+                                        <th>Truck</th>
+                                        <th>Driver</th>
+                                        <th>Customer</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>status</th>
+                                        <th></th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                    @foreach ($details as $value)
+                                        <tr>
+                                            <td>{{ @$value->custom_trip_number }}</td>
+                                            <td> {{ @$value->pickups[0]->pickup_date }}</td>
+                                            <td>{{ @$value->deliveries[0]->delivery_date }}</td>
+                                            <td>{{ @$value->truck_number }}</td>
+                                            <td>{{ @$value->driver_username }}</td>
+                                            <td>{{ @$value->customer_name }}</td>
+                                            <td>{{ @$value->pickups[0]->shipper }}</td>
+                                            <td>{{ @$value->deliveries[0]->consignee }}</td>
+                                            <td>
+                                                <button class="closeBtn dnoo">
+                                                    {{ @$value->booked ? 'Booked' : 'Not Booked' }}
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <div class="wrapp">
+                                                    <button class="saveBtn p010 w-100">
+                                                        Action
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <div class="selecter flex-column">
+                                                        <div class="delete">
+                                                            <a href="{{ route('desa.dispatcher.dispatches.show', @$value->id) }}"
+                                                                target="_blank">
+                                                                <i class="fa fa-eye"></i>
+                                                                <span>View</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="delete">
+                                                            <a href="{{ route('desa.dispatcher.dispatches.edit', @$value->id) }}"
+                                                                target="_blank" class="editButton">
+                                                                <i class="fa fa-edit"></i>
+                                                                <span>Edit</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="delete">
+                                                            <form
+                                                                action="{{ route('desa.dispatcher.dispatches.destroy', @$value->id) }}" method="post">
+                                                                @csrf
+                                                                @method("Delete")
+                                                                <button class="button-delete"
+                                                                    onclick="return confirm('Are you sure you want to delete this?');">
+                                                                    <i class="fa fa-trash"></i>
+                                                                    <span>Delete</span>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
-                    <div class="tab-pane fade overflow" id="pills-profile" role="tabpanel"
+                        {{-- <div class="tab-pane fade overflow" id="pills-profile" role="tabpanel"
                         aria-labelledby="pills-profile-tab">
                         <table class="table myTable">
                             <thead>
@@ -383,25 +387,24 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div> --}}
+
+
                     </div>
 
 
                 </div>
-
-
             </div>
         </div>
     </div>
-</div>
-<script>
-    @if(Session::get('success'))
-    swal({
-        title: "Desa Dispatcher",
-        text: "Your data has been Deleted",
-        icon: "success",
-    });
-    @endif
-
-</script>
+    <script>
+        @if (Session::get('success'))
+            swal({
+            title: "Desa Dispatcher",
+            text: "Your data has been Deleted",
+            icon: "success",
+            });
+        @endif
+    </script>
 
 @endsection

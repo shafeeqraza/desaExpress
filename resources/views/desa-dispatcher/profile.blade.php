@@ -6,7 +6,7 @@
         <h1 class="mainHeading">
             My Info
         </h1>
-        <form id="" action="{{route('update_profile')}}" method="post">
+        <form id="" action="{{route('desa.dispatcher.profile')}}" method="post">
             @csrf
             <div class="row mt5 mb10">
                 <div class="col-lg-12">
