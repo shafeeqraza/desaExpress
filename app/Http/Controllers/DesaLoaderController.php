@@ -9,11 +9,8 @@ use Illuminate\Support\Facades\Session;
 
 class DesaLoaderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function profile()
     {
         $user = auth()->user();
@@ -21,6 +18,7 @@ class DesaLoaderController extends Controller
             "user" => $user,
         ]);
     }
+
 
     public function updateProfile(Request $request)
     {
@@ -51,32 +49,37 @@ class DesaLoaderController extends Controller
         ]);
     }
 
+
     public function myLoads()
     {
         $myLoads = DesaDispatch::where([
-            "driver_username" => auth()->user()->username,
+            "driver_name" => auth()->user()->first_name . ' ' . auth()->user()->last_name,
             "booked" => '1'
         ])->get();
+
+        $dispatch = new DesaDispatch();
+
+        $progressLength = $dispatch->progressDispatch()->count();
+        $completedLength = $dispatch->completedDispatch()->count();
+
         return view("desa-loader.myLoads", [
             "myLoads" => $myLoads,
+            'progressLength' => $progressLength,
+            "completedDispatch" => $completedLength
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $load = DesaDispatch::where([
             'id' => $id,
-            "driver_username" => auth()->user()->username
         ])->get()->first();
         return view("desa-loader.show", [
             "load" => $load,
         ]);
     }
+
     public function map($id)
     {
         return view("desa-loader.map");
@@ -87,7 +90,7 @@ class DesaLoaderController extends Controller
         $dispatch = DesaDispatch::find($id);
         // return $dispatch;
         $dispatch->booked = 1;
-        $dispatch->driver_username = auth()->user()->username;
+        $dispatch->driver_name = auth()->user()->first_name . ' ' . auth()->user()->last_name;
         $dispatch->status = "progress";
         $dispatch->save();
         return redirect()->route("desa.loader.loads")->with("status", "Load has been booked!");
@@ -95,32 +98,15 @@ class DesaLoaderController extends Controller
 
 
 
-
-    public function edit($id)
+    public function statusChange(Request $request, $id)
     {
-        //
+        $dispatch = DesaDispatch::find($id);
+        $dispatch->status = $request->status;
+        $dispatch->save();
+
+        Session::flash("success", "Load has been changed");
+        return redirect()->route("desa.loader.my-loads");
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

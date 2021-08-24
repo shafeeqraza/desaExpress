@@ -52,7 +52,7 @@
                             </div>
                             <div class="subbox2">
                                 <label for="">
-                                    500
+                                    {{ $pendingLength }}
                                 </label>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="subbox2">
                                 <label for="">
-                                    500
+                                    {{ $completedLength }}
                                 </label>
                             </div>
                         </div>

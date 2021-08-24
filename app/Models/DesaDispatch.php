@@ -38,15 +38,32 @@ class DesaDispatch extends Model
 
     public function deliveries(){
         return $this->morphMany(Delivery::class, 'deliveryable');
-        // return $this->morphTo('App\Models\Delivery','deliveryable_id');
     }
 
     public function routes(){
         return $this->morphMany(Route::class, 'routeable');
-        // return $this->morphTo('App\Models\Delivery','deliveryable_id');
     }
     public function pickups(){
         return $this->morphMany(Pickup::class, 'pickupable');
-        // return $this->morphTo('App\Models\Delivery','deliveryable_id');
+    }
+
+    public function progressDispatch()
+    {
+        return $this->whereIn('status', [
+            "in progress",
+            "In Progress",
+            "progress",
+            "Progress"
+        ])->get();
+    }
+
+    public function completedDispatch()
+    {
+        return $this->whereIn('status', ["completed", "Completed"])->get();
+    }
+
+    public function pendingDispatch()
+    {
+        return $this->whereIn('status', ['pending', '0', 'Pending'])->get();
     }
 }

@@ -24,13 +24,16 @@
                     <div class="col-4">
                         <div class="row">
                             <label for="ice-cream-choice">Driver</label>
-                            <input placeholder="Driver" class="fuel-dropdown" name="driverUsername" list="driver" id="driver-dropdown" />
+                            <input placeholder="Driver" class="fuel-dropdown" name="driverName" list="driver" id="driver-dropdown" />
                             <datalist id="driver">
-                                <option value="Andre Bulger">
+                                @foreach ($desaDrivers as $desaDriver)
+                                    <option value="{{ $desaDriver->first_name . " " . $desaDriver->last_name }}"></option>
+                                @endforeach
+                                {{-- <option value="Andre Bulger">
                                 <option value="Dash">
                                 <option value="Mario Lechuga">
                                 <option value="Martinez">
-                                <option value="Mustafa Shakir">
+                                <option value="Mustafa Shakir"> --}}
                             </datalist>
                         </div>
 

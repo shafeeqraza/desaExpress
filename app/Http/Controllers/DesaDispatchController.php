@@ -23,8 +23,18 @@ class DesaDispatchController extends Controller
             ->orderBy('custom_trip_number', 'desc')->get();
         // count booked number show
         $booked_data = DesaDispatch::where('dispatcher_id', $id)->sum('booked');
+        $dispatch = new DesaDispatch();
+        $progressLength = $dispatch->progressDispatch()->count();
+        $completedLength = $dispatch->completedDispatch()->count();
+        $pendingLength = $dispatch->pendingDispatch()->count();
 
-        return view("desa-dispatcher.index", compact('details', 'booked_data'));
+        return view("desa-dispatcher.index", compact(
+            'details',
+            'booked_data',
+            "progressLength",
+            'completedLength',
+            "pendingLength"
+        ));
     }
 
     public function profile()
@@ -43,7 +53,12 @@ class DesaDispatchController extends Controller
 
     public function create()
     {
-        return view("desa-dispatcher.create");
+        $user = new User();
+        $desaDrivers = $user->desaDrivers();
+
+        return view("desa-dispatcher.create", [
+            "desaDrivers" => $desaDrivers
+        ]);
     }
 
 
@@ -53,7 +68,15 @@ class DesaDispatchController extends Controller
         // dd( count($request->pickupDate));
         $dispatch = new DesaDispatch;
         $dispatch->custom_trip_number = $request->tripNumber;
-        $dispatch->driver_username = $request->driverUsername;
+
+        if($request->driverName) {
+            $dispatch->driver_name = $request->driverName;
+            $dispatch->booked = 1;
+            $dispatch->status = "progress";
+        }else {
+            $dispatch->status = "pending";
+
+        }
         $dispatch->dispatcher_id = auth()->id();
         $dispatch->truck_number = $request->truckNumber;
         $dispatch->trailer = $request->trailer;
@@ -119,8 +142,7 @@ class DesaDispatchController extends Controller
     // uzair work
     public function show(Request $request, $id)
     {
-        $id = DesaDispatch::find($id);
-        $detailshow  = DesaDispatch::where('id', $id->id)->with('deliveries', 'routes', 'pickups')->first();
+        $detailshow  = DesaDispatch::where('id', $id)->with('deliveries', 'routes', 'pickups')->first();
         return view("desa-dispatcher.show", compact('detailshow'));
     }
 
@@ -132,10 +154,13 @@ class DesaDispatchController extends Controller
     // uzair work
     public function edit($id)
     {
-        $id = DesaDispatch::find($id);
-        $detailsedit  = DesaDispatch::where('id', $id->id)->with('deliveries', 'routes', 'pickups')->first();
-        // return $detailsedit;
-        return view("desa-dispatcher.edit", compact('detailsedit'));
+        $detailsedit  = DesaDispatch::where('id', $id)->with('deliveries', 'routes', 'pickups')->first();
+        $user = new User();
+        $desaDrivers = $user->desaDrivers();
+        return view("desa-dispatcher.edit", [
+            "detailsedit" => $detailsedit,
+            "desaDrivers" => $desaDrivers
+        ]);
     }
 
     // uzair work
@@ -146,7 +171,16 @@ class DesaDispatchController extends Controller
         $dispatch = DesaDispatch::find($id);
         // return $dispatch->pickups;
         $dispatch->custom_trip_number = $request->tripNumber;
-        $dispatch->driver_username = $request->driverUsername;
+        if($request->driverName) {
+            $dispatch->driver_name = $request->driverName;
+            $dispatch->booked = 1;
+            $dispatch->status = "In Progress";
+
+        }else {
+            $dispatch->driver_name = null;
+            $dispatch->booked = 0;
+            $dispatch->status = "pending";
+        }
         $dispatch->dispatcher_id = auth()->id();
         $dispatch->truck_number = $request->truckNumber;
         $dispatch->trailer = $request->trailer;

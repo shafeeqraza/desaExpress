@@ -20,7 +20,7 @@
                             </div>
                             <div class="subbox2">
                                 <label for="">
-                                    1024
+                                    {{ count($myLoads) }}
                                 </label>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="subbox2">
                                 <label for="">
-                                    524
+                                    {{ $progressLength }}
                                 </label>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="subbox2">
                                 <label for="">
-                                    500
+                                    {{ $completedDispatch }}
                                 </label>
                             </div>
                         </div>
@@ -362,11 +362,15 @@
                                         <td>{{ $dispatch->deliveries[0]->consignee }}</td>
                                         <td>
                                             <div class="wrapp">
-                                                <select name="" id="" class="closeBtn p010 w-100">
-                                                    <option>In Progress</option>
-                                                    <option>Completed</option>
-                                                </select>
-                                                <i class="fa fa-angle-down"></i>
+                                                <form action="{{ route("desa.loader.change.status", $dispatch->id) }}" method="post" >
+                                                    @csrf
+                                                    @method("patch")
+                                                    <select name="status" class="closeBtn p010 w-100 myLoadStatus">
+                                                        <option @if($dispatch->status === "In Progress") selected @endif>In Progress</option>
+                                                        <option @if($dispatch->status === "Completed") selected @endif>Completed</option>
+                                                    </select>
+                                                    <i class="fa fa-angle-down"></i>
+                                                </form>
                                             </div>
                                         </td>
                                         <td>
@@ -676,4 +680,24 @@
 
         </div>
     </div>
+
+    <script>
+
+        @if (Session::get('success'))
+            swal({
+                title: "Desa Loader",
+                text: "Your data has been Updated",
+                icon: "success",
+            });
+        @endif
+
+        const inputs = document.querySelectorAll(".myLoadStatus")
+
+        inputs.forEach((input) => {
+            input.addEventListener("change", e => {
+                e.target.parentNode.submit();
+                // document.getElementById("myLoadStatusChangeForm").submit();
+            });
+        })
+    </script>
 @endsection
